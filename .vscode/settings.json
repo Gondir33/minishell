@@ -1,0 +1,9 @@
+{
+	"files.associations": {
+		"types.h": "c",
+		"stdlib.h": "c",
+		"readline.h": "c",
+		"history.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
+}
