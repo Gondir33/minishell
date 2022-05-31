@@ -7,7 +7,7 @@
 # include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
+/*
 int main(int ac, char **av, char *envp[])
 {
 	int		i;
@@ -33,4 +33,12 @@ int main(int ac, char **av, char *envp[])
 		wait(&status);
 		close(pipe_fd[0]);
 	}
+}*/
+
+int main(int ac, char **av, char *envp[])
+{
+	int i = -1;
+
+	while (envp[++i])
+		printf("%s\n", envp[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/05/31 19:53:13 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/05/31 21:06:01 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int	ft_error(char *cmd, char *mess)
 
 static void child_no_pipe(t_execute *cmds, t_info *info, int *fd)
 {
-	if (!fork())
-	{
+
 		if (cmds->stdIn != 0)
 			dup2(fd[0], 0);
 		if (cmds->stdOut != 0)
@@ -47,13 +46,16 @@ static void child_no_pipe(t_execute *cmds, t_info *info, int *fd)
 					ft_strlen(info->reserved_words[i])) == 0)
 			info->builtins[i](cmds, info);//builtins exit with status
 		}
-		info->status = execve(cmds->arguments[0], cmds->arguments, info->envp);
-		if (cmds->stdIn != 0)
-			close(fd[0]);
-		if (cmds->stdOut != 0)
-			close(fd[1]);
-		exit(info->status);
-	}
+		if (!fork())
+		{
+			info->status = execve(cmds->arguments[0], cmds->arguments, info->envp);
+			if (cmds->stdIn != 0)
+				close(fd[0]);
+			if (cmds->stdOut != 0)
+				close(fd[1]);
+			exit(info->status);
+		}
+
 }
 
 static int	no_pipe_exe(t_execute *cmds, t_info *info)

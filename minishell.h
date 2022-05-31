@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/05/31 13:38:47 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/05/31 21:03:07 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_pipex
 typedef struct s_execute
 {
 	char				*command;
-	char				*option;
+	int					option;
 	char				**arguments;
 	char				*stdOut;
 	char				*stdIn;
@@ -70,5 +70,12 @@ typedef int	(*t_builtin_ptr)(t_execute *, t_info *);
 char	*ft_pwd();
 //pipex
 int	pipex(t_info *info, t_execute *cmds, int num_pipes);
+
+//builthins
+int	echo(t_execute *cmds, t_info *info);
+int	pwd(t_execute *cmds, t_info *info);
+int ft_arg_len(char **arg);
+int	export(t_execute *cmds, t_info *info);//спросить у Урана как он реализовал парсер с переменными окружения
+
 
 #endif
