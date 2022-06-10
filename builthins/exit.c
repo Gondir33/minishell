@@ -6,8 +6,15 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 21:03:41 by sbendu            #+#    #+#             */
-/*   Updated: 2022/05/31 22:13:45 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/01 09:57:37 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int ft_exit(t_execute *cmds, t_info *info)
+{
+	(void)cmds;
+	(void)info;
+	exit(info->status);
+}

@@ -1,0 +1,23 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	{
+		"name": "(gdb) Launch (local)",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/minishell",
+		"stopAtEntry": false,
+		"cwd": "${workspaceFolder}",
+		"environment": [],
+		"MIMode": "gdb",
+		"setupCommands": [
+		{
+			"description": "Enable pretty-printing for gdb",
+			"text": "-enable-pretty-printing",
+			"ignoreFailures": true
+		}
+		],
+		"preLaunchTask": "make debug"
+	}
+	]
+	}

@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 31 22:13:45 2022
+# Make data base, printed on Fri Jun 10 09:11:23 2022
 
 # Variables
 
@@ -20,6 +18,10 @@ make: *** No rule to make target 'all'.  Stop.
 WSLENV = ELECTRON_RUN_AS_NODE/w:
 # default
 .SHELLFLAGS := -c
+# makefile (from 'Makefile', line 24)
+OBJ = $(SRC:.c=.o)
+# makefile (from 'Makefile', line 9)
+SRC = ./parser/main.c ./parser/free_structure.c ./parser/initialize_structure.c ./parser/parse_double_quotes.c ./parser/parse_env.c ./parser/parse_input.c ./parser/parse_output.c ./parser/parse_pipe.c ./parser/parse_quotes.c ./parser/start_parse.c ./execute/execute.c ./execute/pipex.c ./execute/utils.c 
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -36,8 +38,10 @@ SHELL = /bin/sh
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 _ = /mnt/c/Users/Medved/AppData/Local/Programs/Microsoft VS Code/bin/code
-# makefile
-MAKEFILE_LIST := 
+# makefile (from 'Makefile', line 5)
+CFLAGS = -lreadline -g
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -55,7 +59,7 @@ PATH = /home/sbendu/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-d1b249ce-5a71-43fa-a470-379a050deb32.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-0460cfea-c7ab-41cf-a386-f724538bec2c.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -71,7 +75,7 @@ PWD = /home/sbendu/projects/minishell
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/4147_interop
+WSL_INTEROP = /run/WSL/9_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -94,14 +98,16 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
+# makefile (from 'Makefile', line 3)
+CC = gcc
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = sbendu
 # makefile
-.DEFAULT_GOAL := 
-# environment
-NAME = Code
+.DEFAULT_GOAL := all
+# makefile (from 'Makefile', line 1)
+NAME = minishell
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -130,6 +136,8 @@ MAKEFILES :=
 <F = $(notdir $<)
 # environment
 LC_ALL = C
+# makefile (from 'Makefile', line 7)
+INCLD = ./execute/ 
 # environment
 HOSTTYPE = x86_64
 # automatic
@@ -149,7 +157,7 @@ VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
 # variable set hash-table stats:
-# Load=68/1024=7%, Rehash=0, Collisions=4/90=4%
+# Load=73/1024=7%, Rehash=0, Collisions=6/111=5%
 
 # Pattern-specific Variable Values
 
@@ -157,36 +165,162 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2064, inode 81296): 11 files, no impossibilities.
+# . (device 2064, inode 81296): 10 files, no impossibilities.
+# parser (device 2064, inode 82459): 26 files, no impossibilities so far.
+# execute (device 2064, inode 81585): 6 files, no impossibilities so far.
 
-# 11 files, no impossibilities in 1 directories.
+# 42 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
-# No implicit rules.
+%.o: %.c execute/ parser/main.c parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+#  recipe to execute (from 'Makefile', line 32):
+	$(CC) $(CFLAGS) -I $(INCLD) -c $< -o $(<:.c=.o)
+
+# 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
-# Not a target:
-all:
+all: minishell
+#  Phony target (prerequisite of .PHONY).
 #  Command line target.
-#  Implicit rule search has been done.
+#  Implicit rule search has not been done.
 #  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+
+.PHONY: all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+execute/execute.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-06-10 09:11:16.170390909
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+
+parser/main.o: parser/main.c execute/ parser/main.c parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'parser/main'
+#  Last modified 2022-06-10 09:11:18.260390895
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := parser/main.o
+# automatic
+# % := 
+# automatic
+# * := parser/main
+# automatic
+# + := parser/main.c execute/ parser/main.c parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+# automatic
+# | := 
+# automatic
+# < := parser/main.c
+# automatic
+# ^ := parser/main.c execute/ parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+# automatic
+# ? := execute/
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  recipe to execute (from 'Makefile', line 32):
+	$(CC) $(CFLAGS) -I $(INCLD) -c $< -o $(<:.c=.o)
 
 # Not a target:
-makefile:
+parser/free_structure.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+parser/start_parse.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+execute/pipex.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+parser/parse_double_quotes.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+execute/:
 #  Implicit rule search has been done.
+#  Last modified 2022-06-10 09:11:18.560390893
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/initialize_structure.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+ 
+
+# Not a target:
+parser/parse_pipe.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+minishell: parser/main.o parser/free_structure.o parser/initialize_structure.o parser/parse_double_quotes.o parser/parse_env.o parser/parse_input.o parser/parse_output.o parser/parse_pipe.o parser/parse_quotes.o parser/start_parse.o execute/execute.o execute/pipex.o execute/utils.o
+#  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Failed to be updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+#  recipe to execute (from 'Makefile', line 29):
+	$(CC) $^ -o $@ $(CFLAGS) -o $(NAME)
+
+# Not a target:
+parser/parse_output.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 38):
+	rm -rf $(NAME)
+
+# Not a target:
+parser/parse_env.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+parser/parse_quotes.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+execute/utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -195,26 +329,130 @@ makefile:
 #  File has not been updated.
 
 # Not a target:
-GNUmakefile:
+execute/execute.c:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-06-10 09:08:42.900391934
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+
+# Not a target:
+parser/main.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-10 09:04:04.260393796
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/free_structure.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/parse_input.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+parser/start_parse.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 35):
+	rm -rf $(OBJ) 
+
+# Not a target:
+execute/pipex.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-10 09:10:43.280391129
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/parse_double_quotes.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/initialize_structure.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/parse_pipe.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/parse_output.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/parse_env.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/parse_quotes.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 16:21:03.974275411
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+execute/utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-10 08:52:22.13039849
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+parser/parse_input.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# Load=36/1024=4%, Rehash=0, Collisions=1/100=1%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 19 / storage = 162 B / avg = 8 B
-# current buf: size = 8162 B / used = 162 B / count = 19 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 78 / storage = 1111 B / avg = 14 B
+# current buf: size = 8162 B / used = 1111 B / count = 78 / avg = 14 B
 
-# strcache performance: lookups = 22 / hit rate = 13%
+# strcache performance: lookups = 133 / hit rate = 41%
 # hash-table stats:
-# Load=19/8192=0%, Rehash=0, Collisions=1/22=5%
-# Finished Make data base on Tue May 31 22:13:45 2022
+# Load=78/8192=1%, Rehash=0, Collisions=3/133=2%
+# Finished Make data base on Fri Jun 10 09:11:23 2022
 
  

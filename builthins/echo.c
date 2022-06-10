@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:21:51 by sbendu            #+#    #+#             */
-/*   Updated: 2022/05/31 22:13:49 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/01 09:58:34 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	echo(t_execute *cmds, t_info *info)
 	int	i;
 	int	len;
 	
-	i = -1;
+	i = 0;
 	len = ft_arg_len(cmds->arguments);
 	if (cmds->option == 1)
 	{
@@ -34,4 +34,6 @@ int	echo(t_execute *cmds, t_info *info)
 			printf("%s", cmds->arguments[i]);
 		printf("\n");
 	}
+	info->status = 0;
+	return(0);
 }

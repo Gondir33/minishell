@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 20:34:29 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/01 20:01:50 by sbendu           ###   ########.fr       */
+/*   Created: 2022/06/01 09:38:55 by sbendu            #+#    #+#             */
+/*   Updated: 2022/06/04 12:19:13 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_put_last(t_list *envp_l, t_execute *cmds)
+int cd(t_execute *cmds, t_info *info)
 {
-	while (envp_l)
-		envp_l = envp_l->next;
-	envp_l = malloc(sizeof(t_list));
-	envp_l->key = ft_strchr(s, '=');
-	envp_l->value = ft_strrchr(s, '=');
-	envp_l->next = NULL;
-}
-
-int	export(t_execute *cmds, t_info *info)
-{
-	int		num_envp;
-	int		num_arg;
-	char	**new_envp;
-
-	num_envp = ft_arg_len(info->envp);
-	num_arg = ft_arg_len(cmds->arguments);
+	if (ft_arg_len(cmds->arguments) > 2)
+		return (ft_error("cd: ", "too many arguments"));
+	info->status = chdir(cmds->arguments[1]);
+	if (info->status == -1)
+	{
+		info->status = 1;
+		return (ft_error(cmds->arguments[1], ": No such file or directory"));
+	}
 }

@@ -1,6 +1,17 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/sbendu/projects/minishell'
+gcc -lreadline -g -I ./execute/  -c parser/main.c -o parser/main.o
+gcc -lreadline -g -I ./execute/  -c parser/free_structure.c -o parser/free_structure.o
+gcc -lreadline -g -I ./execute/  -c parser/initialize_structure.c -o parser/initialize_structure.o
+gcc -lreadline -g -I ./execute/  -c parser/parse_double_quotes.c -o parser/parse_double_quotes.o
+gcc -lreadline -g -I ./execute/  -c parser/parse_env.c -o parser/parse_env.o
+gcc -lreadline -g -I ./execute/  -c parser/parse_input.c -o parser/parse_input.o
+gcc -lreadline -g -I ./execute/  -c parser/parse_output.c -o parser/parse_output.o
+gcc -lreadline -g -I ./execute/  -c parser/parse_pipe.c -o parser/parse_pipe.o
+gcc -lreadline -g -I ./execute/  -c parser/parse_quotes.c -o parser/parse_quotes.o
+gcc -lreadline -g -I ./execute/  -c parser/start_parse.c -o parser/start_parse.o
+gcc -lreadline -g -I ./execute/  -c execute/pipex.c -o execute/pipex.o
+gcc -lreadline -g -I ./execute/  -c execute/utils.c -o execute/utils.o
+gcc parser/main.o parser/free_structure.o parser/initialize_structure.o parser/parse_double_quotes.o parser/parse_env.o parser/parse_input.o parser/parse_output.o parser/parse_pipe.o parser/parse_quotes.o parser/start_parse.o execute/execute.o execute/pipex.o execute/utils.o -o minishell -lreadline -g -o minishell
 make: Leaving directory '/home/sbendu/projects/minishell'
  
-make: *** No targets specified and no makefile found.  Stop.
-

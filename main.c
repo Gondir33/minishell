@@ -35,10 +35,13 @@ int main(int ac, char **av, char *envp[])
 	}
 }*/
 
+
 int main(int ac, char **av, char *envp[])
 {
-	int i = -1;
+	int i;
+	int	fd;
+	char	*s;
 
-	while (envp[++i])
-		printf("%s\n", envp[i]);
+	fd = open("sss", O_WRONLY | O_TRUNC | O_CREAT);
+	write(fd, "12dsadsadsa3", 10);
 }
