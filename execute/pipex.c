@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/11 10:14:18 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/11 15:02:56 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,8 @@ int	init_pip(t_pipex *pip)
 	return (0);
 }
 
-int	child_process(t_execute *cmds, int fd_0, int fd_1, t_pipex *pip)
+int	fd_open(t_execute * cmds, int fd_0, int fd_1, int *fd)
 {
-	int	fd[2];
-	int	status;
-	
 	fd[0] = 0;
 	fd[1] = 1;
 	if (cmds->stdIn != 0)
@@ -64,6 +61,18 @@ int	child_process(t_execute *cmds, int fd_0, int fd_1, t_pipex *pip)
 	}
 	else
 		dup2(fd_1, 1);
+	return (0);
+}
+
+int	child_process(t_execute *cmds, int fd_0, int fd_1, t_pipex *pip)
+{
+	int	fd[2];
+	int	status;
+	
+	fd[0] = 0;
+	fd[1] = 1;
+	if (fd_open(cmds, fd_0, fd_1, fd) == -1)
+		return (-1);
 	// builtins
 	close_fd(pip);
 	fd_close(fd[0], fd[1], cmds);

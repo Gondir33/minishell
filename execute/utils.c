@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:35:31 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/11 10:11:00 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/11 15:22:06 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ void fd_close(int fd_0, int fd_1, t_execute *cmds)
 {
 	if (cmds->stdIn != 0)
 		close(fd_0);
-	if (cmds->stdOut != 0 || cmds->stdOut2 != 0)
+	if (cmds->stdOut != 0)
+		close(fd_1);
+	if (cmds->stdOut2 != 0)
 		close(fd_1);
 }
 

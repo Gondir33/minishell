@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 11 08:57:25 2022
+# Make data base, printed on Sat Jun 11 13:29:20 2022
 
 # Variables
 
@@ -59,7 +59,7 @@ PATH = /home/sbendu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-efe43ed0-5ae9-4822-a151-192eef6f62b5.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-36a7b44f-8b47-4ca9-985a-67e2807a8a5e.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -75,7 +75,7 @@ PWD = /home/sbendu/projects/minishell
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/9_interop
+WSL_INTEROP = /run/WSL/35_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -156,10 +156,8 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
-# environment
-MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=6/112=5%
+# Load=73/1024=7%, Rehash=0, Collisions=6/111=5%
 
 # Pattern-specific Variable Values
 
@@ -167,11 +165,11 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2064, inode 81296): 12 files, no impossibilities.
-# parser (device 2064, inode 82459): 26 files, no impossibilities so far.
-# execute (device 2064, inode 81585): 7 files, no impossibilities so far.
+# . (device 2064, inode 81296): 10 files, no impossibilities.
+# parser (device 2064, inode 82459): 16 files, no impossibilities so far.
+# execute (device 2064, inode 81585): 4 files, no impossibilities so far.
 
-# 45 files, no impossibilities in 3 directories.
+# 30 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -214,7 +212,7 @@ Makefile:
 parser/main.o: parser/main.c execute/ parser/main.c parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'parser/main'
-#  Last modified 2022-06-10 20:53:09.436910778
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -232,7 +230,7 @@ parser/main.o: parser/main.c execute/ parser/main.c parser/free_structure.c pars
 # automatic
 # ^ := parser/main.c execute/ parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
 # automatic
-# ? := execute/ execute/pipex.c
+# ? := parser/main.c execute/ parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/16=6%
 #  recipe to execute (from 'Makefile', line 32):
@@ -265,16 +263,16 @@ parser/parse_double_quotes.o:
 # Not a target:
 execute/:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-10 20:53:09.766910776
+#  Last modified 2022-06-11 10:18:00.944514255
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 parser/initialize_structure.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
+ 
 
 # Not a target:
 parser/parse_pipe.o:
@@ -284,7 +282,7 @@ parser/parse_pipe.o:
 
 minishell: parser/main.o parser/free_structure.o parser/initialize_structure.o parser/parse_double_quotes.o parser/parse_env.o parser/parse_input.o parser/parse_output.o parser/parse_pipe.o parser/parse_quotes.o parser/start_parse.o execute/execute.o execute/pipex.o execute/utils.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-10 20:53:09.816910775
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -381,7 +379,7 @@ clean:
 # Not a target:
 execute/pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-10 20:55:17.106909924
+#  Last modified 2022-06-11 10:14:18.82451574
 #  File has been updated.
 #  Successfully updated.
 
@@ -430,7 +428,7 @@ parser/parse_quotes.c:
 # Not a target:
 execute/utils.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-10 19:57:43.416933012
+#  Last modified 2022-06-11 10:11:00.914517063
 #  File has been updated.
 #  Successfully updated.
 
@@ -449,12 +447,12 @@ parser/parse_input.c:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 80 / storage = 1125 B / avg = 14 B
-# current buf: size = 8162 B / used = 1125 B / count = 80 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 66 / storage = 941 B / avg = 14 B
+# current buf: size = 8162 B / used = 941 B / count = 66 / avg = 14 B
 
-# strcache performance: lookups = 136 / hit rate = 41%
+# strcache performance: lookups = 121 / hit rate = 45%
 # hash-table stats:
-# Load=80/8192=1%, Rehash=0, Collisions=3/136=2%
-# Finished Make data base on Sat Jun 11 08:57:25 2022
+# Load=66/8192=1%, Rehash=0, Collisions=3/121=2%
+# Finished Make data base on Sat Jun 11 13:29:20 2022
 
  
