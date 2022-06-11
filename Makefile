@@ -2,7 +2,7 @@ NAME = minishell
 
 CC = gcc
 
-CFLAGS = -lreadline -g
+CFLAGS = -lreadline -g -Wall -Wextra -Werror
 
 INCLD =./execute/\
 

@@ -6,11 +6,11 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:34:29 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/01 20:01:50 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/10 19:06:37 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../execute/execute.h"
 
 void	ft_put_last(t_list *envp_l, t_execute *cmds)
 {

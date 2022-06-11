@@ -6,11 +6,11 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:53:11 by sbendu            #+#    #+#             */
-/*   Updated: 2022/05/31 20:53:27 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/10 19:06:38 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../execute/execute.h"
 
 int ft_arg_len(char **arg)
 {

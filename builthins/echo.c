@@ -6,11 +6,11 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:21:51 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/01 09:58:34 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/10 19:06:35 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../execute/execute.h"
 
 int	echo(t_execute *cmds, t_info *info)
 {
