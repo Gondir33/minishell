@@ -6,16 +6,16 @@ CFLAGS = -lreadline -g -Wall -Wextra -Werror
 
 INCLD =./execute/\
 
-SRC = ./parser/main.c\
-		./parser/free_structure.c\
-		./parser/initialize_structure.c\
-		./parser/parse_double_quotes.c\
-		./parser/parse_env.c\
-		./parser/parse_input.c\
-		./parser/parse_output.c\
-		./parser/parse_pipe.c\
-		./parser/parse_quotes.c\
-		./parser/start_parse.c\
+SRC = ./pars/main.c\
+		./pars/free_structure.c\
+		./pars/initialize_structure.c\
+		./pars/parse_double_quotes.c\
+		./pars/parse_env.c\
+		./pars/parse_input.c\
+		./pars/parse_output.c\
+		./pars/parse_pipe.c\
+		./pars/parse_quotes.c\
+		./pars/start_parse.c\
 		./execute/execute.c\
 		./execute/pipex.c\
 		./execute/utils.c\
