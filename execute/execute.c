@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/11 16:17:27 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:10:45 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,23 @@ static void child_no_pipe(t_execute *cmds, t_info *info, int *fd)
 		flag = 1;
 		if (cmds->stdIn != 0)
 			dup2(fd[0], 0);
+		if (cmds->stdIn2 != 0)
+			dup2(fd[0], 0);
 		if (cmds->stdOut != 0)
 			dup2(fd[1], 1);
 		if (cmds->stdOut2 != 0)
 			dup2(fd[1], 1);
 			//bultins
 		if (flag == 1)
-			if (!fork())
+		{
+			info->pid_child = fork();
+			if (!info->pid_child)
 			{
 				fd_close(fd[0], fd[1], cmds);
 				info->status = execve(cmds->arguments[0], cmds->arguments, info->envp);
 				exit(info->status);
 			}
+		}
 		fd_close(fd[0], fd[1], cmds);
 }
 
@@ -43,6 +48,11 @@ int	no_pipe_exe(t_execute *cmds, t_info *info)
 		fd[0] = open(cmds->stdIn, O_RDONLY);
 		if (fd[0] < 0)
 			return (ft_error(cmds->stdIn, ": No such file or dirctory"));
+	}
+	if (cmds->stdIn2 != 0)
+	{
+		fd[0] = open(".stdIn2", O_WRONLY | O_TRUNC | O_CREAT | O_RDONLY);
+		write(fd[0], cmds->stdIn2, ft_strlen(cmds->stdIn2));
 	}
 	if (cmds->stdOut != 0)
 		fd[1] = open(cmds->stdOut, O_WRONLY | O_TRUNC | O_CREAT);

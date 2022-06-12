@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/11 15:02:56 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:49:58 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ int	fd_open(t_execute * cmds, int fd_0, int fd_1, int *fd)
 			return(ft_error(cmds->stdIn, ": No such file or dirctory"));
 		dup2(fd[0], 0);
 	}
+	else if (cmds->stdIn2 != 0)
+	{
+		fd[0] = open(".stdIn2", O_WRONLY | O_TRUNC | O_CREAT | O_RDONLY);
+		write(fd[0], cmds->stdIn2, ft_strlen(cmds->stdIn2));
+		dup2(fd[0], 0);
+	}
 	else
 		dup2(fd_0, 0);
 	if (cmds->stdOut != 0)
@@ -77,6 +83,7 @@ int	child_process(t_execute *cmds, int fd_0, int fd_1, t_pipex *pip)
 	close_fd(pip);
 	fd_close(fd[0], fd[1], cmds);
 	status = execve(cmds->arguments[0], cmds->arguments, 0);
+	//free
 	exit(status);
 }
 
@@ -97,7 +104,7 @@ void	parent_process(t_execute *cmds, t_pipex *pip)
 			else if (i == pip->num_pipes)
 				child_process(cmds, pip->pipe_fd[(i - 1) * 2], pip->temp_1_fd, pip);
 			else
-				child_process(cmds, pip->pipe_fd[(i - 1) * 2], \
+				child_process(cmds, pip->pipe_fd[(i - 1) * 2],
 							pip->pipe_fd[i * 2 +  1], pip);
 		}
 		cmds = cmds->next;
@@ -113,7 +120,7 @@ int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 	parent_process(cmds, pip);
 	close_fd(pip);
 	while (++i <= pip->num_pipes)
-		waitpid(pip->pid[i], &info->status, 0);
+		waitpid(pip->pid[i], &info->status, WIFSIGNALED);
 	free(pip->pid);
 	free(pip->pipe_fd);
 	return (0);
