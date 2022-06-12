@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jun 12 18:52:56 2022
+# Make data base, printed on Sun Jun 12 20:06:37 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ WSLENV = ELECTRON_RUN_AS_NODE/w:
 # makefile (from 'Makefile', line 24)
 OBJ = $(SRC:.c=.o)
 # makefile (from 'Makefile', line 9)
-SRC = ./parser/main.c ./parser/free_structure.c ./parser/initialize_structure.c ./parser/parse_double_quotes.c ./parser/parse_env.c ./parser/parse_input.c ./parser/parse_output.c ./parser/parse_pipe.c ./parser/parse_quotes.c ./parser/start_parse.c ./execute/execute.c ./execute/pipex.c ./execute/utils.c 
+SRC = ./pars/main.c ./pars/free_structure.c ./pars/initialize_structure.c ./pars/parse_double_quotes.c ./pars/parse_env.c ./pars/parse_input.c ./pars/parse_output.c ./pars/parse_pipe.c ./pars/parse_quotes.c ./pars/start_parse.c ./execute/execute.c ./execute/pipex.c ./execute/utils.c 
 # environment
 VSCODE_LOG_NATIVE = false
 # automatic
@@ -57,6 +57,7 @@ MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 PATH = /home/sbendu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/home/sbendu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/WindowsApps/CanonicalGroupLimited.UbuntuonWindows_2004.2022.1.0_x64__79rhkp1fndgsc:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Users/Medved/anaconda3:/mnt/c/Users/Medved/anaconda3/Library/mingw-w64/bin:/mnt/c/Users/Medved/anaconda3/Library/usr/bin:/mnt/c/Users/Medved/anaconda3/Library/bin:/mnt/c/Users/Medved/anaconda3/Scripts:/mnt/c/Users/Medved/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Medved/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin:/home/sbendu/projects/fract-ol/minilibx-linux
 # environment
+ 
 VSCODE_LOG_STACK = false
 # environment
 VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-bd818df8-7b34-4a37-8548-1273fc533d7b.sock
@@ -85,7 +86,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = sbendu
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -167,21 +168,28 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2064, inode 81296): 13 files, no impossibilities.
-# parser (device 2064, inode 82459): 16 files, no impossibilities so far.
+# . (device 2064, inode 81296): 8 files, no impossibilities.
+# pars (device 2064, inode 82336): 14 files, no impossibilities so far.
 # execute (device 2064, inode 81585): 4 files, no impossibilities so far.
 
-# 33 files, no impossibilities in 3 directories.
+# 26 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
-%.o: %.c execute/ parser/main.c parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+%.o: %.c execute/ pars/main.c pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
 #  recipe to execute (from 'Makefile', line 32):
 	$(CC) $(CFLAGS) -I $(INCLD) -c $< -o $(<:.c=.o)
 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
+
+# Not a target:
+pars/parse_input.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 13:17:14.771658303
+#  File has been updated.
+#  Successfully updated.
 
 all: minishell
 #  Phony target (prerequisite of .PHONY).
@@ -207,45 +215,45 @@ execute/execute.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-10 19:58:41.726932622
+#  Last modified 2022-06-12 20:06:36.53527028
 #  File has been updated.
 #  Successfully updated.
 
-parser/main.o: parser/main.c execute/ parser/main.c parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+pars/main.o: pars/main.c execute/ pars/main.c pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
 #  Implicit rule search has been done.
-#  Implicit/static pattern stem: 'parser/main'
+#  Implicit/static pattern stem: 'pars/main'
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
-# @ := parser/main.o
+# @ := pars/main.o
 # automatic
 # % := 
 # automatic
-# * := parser/main
+# * := pars/main
 # automatic
-# + := parser/main.c execute/ parser/main.c parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+# + := pars/main.c execute/ pars/main.c pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
 # automatic
 # | := 
 # automatic
-# < := parser/main.c
+# < := pars/main.c
 # automatic
-# ^ := parser/main.c execute/ parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+# ^ := pars/main.c execute/ pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
 # automatic
-# ? := parser/main.c execute/ parser/free_structure.c parser/initialize_structure.c parser/parse_double_quotes.c parser/parse_env.c parser/parse_input.c parser/parse_output.c parser/parse_pipe.c parser/parse_quotes.c parser/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
+# ? := pars/main.c execute/ pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c execute/execute.c execute/pipex.c execute/utils.c
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/16=6%
 #  recipe to execute (from 'Makefile', line 32):
 	$(CC) $(CFLAGS) -I $(INCLD) -c $< -o $(<:.c=.o)
 
 # Not a target:
-parser/free_structure.o:
+pars/free_structure.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-parser/start_parse.o:
+pars/start_parse.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -257,7 +265,7 @@ execute/pipex.o:
 #  File has not been updated.
 
 # Not a target:
-parser/parse_double_quotes.o:
+pars/parse_double_quotes.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -265,26 +273,25 @@ parser/parse_double_quotes.o:
 # Not a target:
 execute/:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 16:18:00.074367058
+#  Last modified 2022-06-12 20:01:15.885272424
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/initialize_structure.o:
+pars/initialize_structure.o:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-parser/parse_pipe.o:
+pars/parse_pipe.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-minishell: parser/main.o parser/free_structure.o parser/initialize_structure.o parser/parse_double_quotes.o parser/parse_env.o parser/parse_input.o parser/parse_output.o parser/parse_pipe.o parser/parse_quotes.o parser/start_parse.o execute/execute.o execute/pipex.o execute/utils.o
+minishell: pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o execute/execute.o execute/pipex.o execute/utils.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-11 16:17:11.474367383
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -293,7 +300,7 @@ minishell: parser/main.o parser/free_structure.o parser/initialize_structure.o p
 	$(CC) $^ -o $@ $(CFLAGS) -o $(NAME)
 
 # Not a target:
-parser/parse_output.o:
+pars/parse_output.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -307,13 +314,7 @@ fclean: clean
 	rm -rf $(NAME)
 
 # Not a target:
-parser/parse_env.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-parser/parse_quotes.o:
+pars/parse_env.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -325,6 +326,13 @@ execute/utils.o:
 #  File has not been updated.
 
 # Not a target:
+pars/parse_quotes.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+ 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -333,42 +341,42 @@ execute/utils.o:
 # Not a target:
 execute/execute.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 16:17:27.224367278
+#  Last modified 2022-06-12 19:10:45.875292679
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/main.c:
+pars/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 15:16:07.544391875
+#  Last modified 2022-06-12 19:53:54.965275371
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/free_structure.c:
+pars/free_structure.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-09 13:17:14.771658303
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/parse_input.o:
+pars/parse_input.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-parser/start_parse.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-10 20:00:37.916931845
-#  File has been updated.
-#  Successfully updated.
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+
+# Not a target:
+pars/start_parse.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-10 20:00:37.916931845
+#  File has been updated.
+#  Successfully updated.
 
 clean:
 #  Phony target (prerequisite of .PHONY).
@@ -381,49 +389,42 @@ clean:
 # Not a target:
 execute/pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 15:02:56.494397163
+#  Last modified 2022-06-12 19:49:59.005276949
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/parse_double_quotes.c:
+pars/parse_double_quotes.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-09 13:17:14.771658303
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/initialize_structure.c:
+pars/initialize_structure.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-09 13:17:14.771658303
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/parse_pipe.c:
+pars/parse_pipe.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-10 20:00:01.976932085
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/parse_output.c:
+pars/parse_output.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-09 13:17:14.771658303
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-parser/parse_env.c:
+pars/parse_env.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-10 19:59:44.056932205
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-parser/parse_quotes.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-09 16:21:03.974275411
 #  File has been updated.
 #  Successfully updated.
 
@@ -435,26 +436,26 @@ execute/utils.c:
 #  Successfully updated.
 
 # Not a target:
-parser/parse_input.c:
+pars/parse_quotes.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-09 13:17:14.771658303
+#  Last modified 2022-06-09 16:21:03.974275411
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=36/1024=4%, Rehash=0, Collisions=1/100=1%
+# Load=36/1024=4%, Rehash=0, Collisions=0/100=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 67 / storage = 942 B / avg = 14 B
-# current buf: size = 8162 B / used = 942 B / count = 67 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 64 / storage = 876 B / avg = 13 B
+# current buf: size = 8162 B / used = 876 B / count = 64 / avg = 13 B
 
-# strcache performance: lookups = 124 / hit rate = 45%
+# strcache performance: lookups = 117 / hit rate = 45%
 # hash-table stats:
-# Load=67/8192=1%, Rehash=0, Collisions=3/124=2%
-# Finished Make data base on Sun Jun 12 18:52:56 2022
+# Load=64/8192=1%, Rehash=0, Collisions=2/117=2%
+# Finished Make data base on Sun Jun 12 20:06:37 2022
 
  

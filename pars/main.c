@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:58:47 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/12 19:53:54 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:06:37 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char **ft_envp(char **envp)
 	while (envp[++i])
 		;
 	tmp = malloc(i + 1);
+	
 }
 
 void	init_info(t_info *info, char **envp)
