@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 11 13:29:20 2022
+# Make data base, printed on Sun Jun 12 18:52:56 2022
 
 # Variables
 
@@ -59,7 +59,7 @@ PATH = /home/sbendu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-36a7b44f-8b47-4ca9-985a-67e2807a8a5e.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-bd818df8-7b34-4a37-8548-1273fc533d7b.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -75,7 +75,7 @@ PWD = /home/sbendu/projects/minishell
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/35_interop
+WSL_INTEROP = /run/WSL/9_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -156,8 +156,10 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=73/1024=7%, Rehash=0, Collisions=6/111=5%
+# Load=74/1024=7%, Rehash=0, Collisions=6/112=5%
 
 # Pattern-specific Variable Values
 
@@ -165,11 +167,11 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2064, inode 81296): 10 files, no impossibilities.
+# . (device 2064, inode 81296): 13 files, no impossibilities.
 # parser (device 2064, inode 82459): 16 files, no impossibilities so far.
 # execute (device 2064, inode 81585): 4 files, no impossibilities so far.
 
-# 30 files, no impossibilities in 3 directories.
+# 33 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -263,16 +265,16 @@ parser/parse_double_quotes.o:
 # Not a target:
 execute/:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 10:18:00.944514255
+#  Last modified 2022-06-11 16:18:00.074367058
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 parser/initialize_structure.o:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 parser/parse_pipe.o:
@@ -282,7 +284,7 @@ parser/parse_pipe.o:
 
 minishell: parser/main.o parser/free_structure.o parser/initialize_structure.o parser/parse_double_quotes.o parser/parse_env.o parser/parse_input.o parser/parse_output.o parser/parse_pipe.o parser/parse_quotes.o parser/start_parse.o execute/execute.o execute/pipex.o execute/utils.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-06-11 16:17:11.474367383
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -331,14 +333,14 @@ execute/utils.o:
 # Not a target:
 execute/execute.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-10 20:02:21.706931151
+#  Last modified 2022-06-11 16:17:27.224367278
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 parser/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-10 20:44:20.106914316
+#  Last modified 2022-06-11 15:16:07.544391875
 #  File has been updated.
 #  Successfully updated.
 
@@ -379,7 +381,7 @@ clean:
 # Not a target:
 execute/pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 10:14:18.82451574
+#  Last modified 2022-06-11 15:02:56.494397163
 #  File has been updated.
 #  Successfully updated.
 
@@ -428,7 +430,7 @@ parser/parse_quotes.c:
 # Not a target:
 execute/utils.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-11 10:11:00.914517063
+#  Last modified 2022-06-11 15:22:06.214389478
 #  File has been updated.
 #  Successfully updated.
 
@@ -447,12 +449,12 @@ parser/parse_input.c:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 66 / storage = 941 B / avg = 14 B
-# current buf: size = 8162 B / used = 941 B / count = 66 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 67 / storage = 942 B / avg = 14 B
+# current buf: size = 8162 B / used = 942 B / count = 67 / avg = 14 B
 
-# strcache performance: lookups = 121 / hit rate = 45%
+# strcache performance: lookups = 124 / hit rate = 45%
 # hash-table stats:
-# Load=66/8192=1%, Rehash=0, Collisions=3/121=2%
-# Finished Make data base on Sat Jun 11 13:29:20 2022
+# Load=67/8192=1%, Rehash=0, Collisions=3/124=2%
+# Finished Make data base on Sun Jun 12 18:52:56 2022
 
  
