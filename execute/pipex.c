@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/12 19:49:58 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:09:48 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 	parent_process(cmds, pip);
 	close_fd(pip);
 	while (++i <= pip->num_pipes)
-		waitpid(pip->pid[i], &info->status, WIFSIGNALED);
+		waitpid(pip->pid[i], &info->status, 0);
 	free(pip->pid);
 	free(pip->pipe_fd);
 	return (0);

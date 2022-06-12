@@ -6,14 +6,14 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/10 19:57:50 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:07:26 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTE_H
 # define EXECUTE_H
 
-# include "../parser/minishell.h"
+# include "../pars/minishell.h"
 
 //execute
 int	execute(t_execute *cmds, t_info *info);

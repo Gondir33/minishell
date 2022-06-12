@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:58:47 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/12 20:06:37 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:07:44 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,9 @@ void printDir()
 	printf("%s in %s ", username, cwd);
 }
 
-char **ft_envp(char **envp)
-{
-	int i;
-	char **tmp;
-
-	i = -1;
-	while (envp[++i])
-		;
-	tmp = malloc(i + 1);
-	
-}
-
 void	init_info(t_info *info, char **envp)
 {
-	info->envp = ;
+	info->envp = envp;
 	info->status = 0;
 	info->l_envp = NULL;
 }

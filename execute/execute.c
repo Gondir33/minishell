@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/12 19:10:45 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:09:33 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ static void child_no_pipe(t_execute *cmds, t_info *info, int *fd)
 		if (cmds->stdOut2 != 0)
 			dup2(fd[1], 1);
 			//bultins
+		info->pid_child = (int *)malloc(sizeof(int) * 2);
 		if (flag == 1)
 		{
-			info->pid_child = fork();
-			if (!info->pid_child)
+			info->pid_child[0] = fork();
+			info->pid_child[1] = 0;
+			if (!info->pid_child[0])
 			{
 				fd_close(fd[0], fd[1], cmds);
 				info->status = execve(cmds->arguments[0], cmds->arguments, info->envp);

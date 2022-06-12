@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jun 12 20:06:37 2022
+# Make data base, printed on Sun Jun 12 20:07:08 2022
 
 # Variables
 
@@ -57,7 +57,6 @@ MAKE_HOST := x86_64-pc-linux-gnu
 # environment
 PATH = /home/sbendu/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/home/sbendu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files/WindowsApps/CanonicalGroupLimited.UbuntuonWindows_2004.2022.1.0_x64__79rhkp1fndgsc:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Users/Medved/anaconda3:/mnt/c/Users/Medved/anaconda3/Library/mingw-w64/bin:/mnt/c/Users/Medved/anaconda3/Library/usr/bin:/mnt/c/Users/Medved/anaconda3/Library/bin:/mnt/c/Users/Medved/anaconda3/Scripts:/mnt/c/Users/Medved/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Medved/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin:/home/sbendu/projects/fract-ol/minilibx-linux
 # environment
- 
 VSCODE_LOG_STACK = false
 # environment
 VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-bd818df8-7b34-4a37-8548-1273fc533d7b.sock
@@ -215,7 +214,7 @@ execute/execute.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 20:06:36.53527028
+#  Last modified 2022-06-12 20:06:39.135270263
 #  File has been updated.
 #  Successfully updated.
 
@@ -273,6 +272,7 @@ pars/parse_double_quotes.o:
 # Not a target:
 execute/:
 #  Implicit rule search has been done.
+ 
 #  Last modified 2022-06-12 20:01:15.885272424
 #  File has been updated.
 #  Successfully updated.
@@ -332,7 +332,6 @@ pars/parse_quotes.o:
 #  File has not been updated.
 
 # Not a target:
- 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -348,7 +347,7 @@ execute/execute.c:
 # Not a target:
 pars/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 19:53:54.965275371
+#  Last modified 2022-06-12 20:06:37.495270274
 #  File has been updated.
 #  Successfully updated.
 
@@ -456,6 +455,6 @@ pars/parse_quotes.c:
 # strcache performance: lookups = 117 / hit rate = 45%
 # hash-table stats:
 # Load=64/8192=1%, Rehash=0, Collisions=2/117=2%
-# Finished Make data base on Sun Jun 12 20:06:37 2022
+# Finished Make data base on Sun Jun 12 20:07:08 2022
 
  

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 13:50:14 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/12 20:06:37 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:09:20 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_info
 	char			**envp;
 	t_list			*l_envp;
 	int				status;
-	pid_t			*pid_child;
+	int				*pid_child;
 }t_info;
 
 typedef struct s_pipex
