@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_double_quotes.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:02:33 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/07 21:10:26 by leldiss          ###   ########.fr       */
+/*   Updated: 2022/06/13 10:41:46 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ char	*parse_double_quotes2(t_execute	*info, char	*line, int size)
 	int	i;
 
 	i = 0;
-	printf("line is %c\n", *line);
 	while (i < size)
 	{
 		if (*line == '$')

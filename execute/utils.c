@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:35:31 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/11 15:22:06 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/13 11:08:44 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,17 @@ void	init_arg(t_execute *cmds, int num)
 	while (cmds)
 	{
 		i = 0;
-		cmds->arguments = (char **)malloc(num + 1);
+		cmds->arguments = (char **)malloc(sizeof(char **) * (num + 2));
 		cmds->arguments[i] = ft_strjoin2("/usr/bin/", cmds->command);
-		++i;
-		while (cmds->argument)
+
+		while (cmds->argument->next)
 		{
-			cmds->arguments[i] = cmds->argument->argument;
+			cmds->arguments[++i] = cmds->argument->argument;
 			cmds->argument = cmds->argument->next;
-			++i;
 		}
+		cmds->arguments[++i] = cmds->argument->argument;
+		cmds->argument = cmds->argument->head;
+		cmds->arguments[++i] = NULL;
 		cmds = cmds->next;
 	}
 }
@@ -91,11 +93,9 @@ int	ft_error(char *cmd, char *mess)
 
 void fd_close(int fd_0, int fd_1, t_execute *cmds)
 {
-	if (cmds->stdIn != 0)
+	if (cmds->stdIn != 0 || cmds->stdIn2 != 0)
 		close(fd_0);
-	if (cmds->stdOut != 0)
-		close(fd_1);
-	if (cmds->stdOut2 != 0)
+	if (cmds->stdOut != 0 || cmds->stdOut2 != 0)
 		close(fd_1);
 }
 

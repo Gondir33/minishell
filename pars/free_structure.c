@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_structure.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:19:22 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/07 20:49:24 by leldiss          ###   ########.fr       */
+/*   Updated: 2022/06/13 17:04:07 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ void	free_execute(t_execute *info)
 	while (info != NULL)
 	{
 		tmp = info;
+		if (info->arguments != NULL)
+		{
+			free(info->arguments[0]);
+			free(info->arguments);
+		}
 		if (info->argument != NULL)
 			free_arguments(info->argument);
 		if (info->command != NULL)

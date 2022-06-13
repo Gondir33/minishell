@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/12 20:09:48 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/13 10:47:49 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,11 +117,17 @@ int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 
 	i = -1;
 	init_pip(pip);
+	info->pid_child = pip->pid;
 	parent_process(cmds, pip);
 	close_fd(pip);
 	while (++i <= pip->num_pipes)
+	{
 		waitpid(pip->pid[i], &info->status, 0);
+		info->status = info->status % 256;
+	}
 	free(pip->pid);
+	pip->pid = NULL;
 	free(pip->pipe_fd);
+	pip->pipe_fd = NULL;
 	return (0);
 }

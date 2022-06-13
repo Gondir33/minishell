@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 13:58:42 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/10 19:59:44 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/13 10:41:35 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,6 @@ char *parse_env(t_execute *info, char *line)
 	int	size;
 	
 	size = final_size_env(line);
-	printf("size is %d\n", size);
 	if (size != 0)
 	{
 		if (info->argument->argument != NULL)
