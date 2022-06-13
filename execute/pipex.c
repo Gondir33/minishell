@@ -6,53 +6,49 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/13 10:47:49 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/14 00:37:41 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-static void close_fd(t_pipex *pip)
+static int	fd_open2(t_execute *cmds)
 {
-	int	i;
+	int	fd_pipe[2];
+	int	pid;
 
-	i = -1;
-	while (++i < pip->num_pipes * 2)
-		close(pip->pipe_fd[i]);
-}
-
-int	init_pip(t_pipex *pip)
-{
-	int	i;
-
-	i = -1;
-	pip->pipe_fd = malloc(sizeof(int) * pip->num_pipes * 2);
-	if (!pip->pipe_fd)
-		return (-1);
-	while (++i < pip->num_pipes)
-		if (pipe(pip->pipe_fd + i * 2) == -1)
-			return(-1);
-	pip->pid = malloc(sizeof(int) * (pip->num_pipes + 1));
+	if (cmds->stdIn2 != 0)
+	{
+		if (pipe(fd_pipe) == -1)
+			return (-1);
+		pid = fork();
+		if (!pid)
+		{
+			write(fd_pipe[1], cmds->stdIn2, ft_strlen(cmds->stdIn2));
+			close(fd_pipe[1]);
+			close(fd_pipe[0]);
+			free_all(cmds);
+			exit(0);
+		}
+		close(fd_pipe[1]);
+		waitpid(pid, &info->status, 0);
+		dup2(fd_pipe[0], 1);
+		close(fd_pipe[0]);
+	}
 	return (0);
 }
 
-int	fd_open(t_execute * cmds, int fd_0, int fd_1, int *fd)
+static int	fd_open(t_execute *cmds, int fd_0, int fd_1, int *fd)
 {
-	fd[0] = 0;
-	fd[1] = 1;
 	if (cmds->stdIn != 0)
 	{
 		fd[0] = open(cmds->stdIn, O_RDONLY);
-		if(fd[0] < 0)
-			return(ft_error(cmds->stdIn, ": No such file or dirctory"));
+		if (fd[0] < 0)
+			return (ft_error(cmds->stdIn, ": No such file or dirctory"));
 		dup2(fd[0], 0);
 	}
-	else if (cmds->stdIn2 != 0)
-	{
-		fd[0] = open(".stdIn2", O_WRONLY | O_TRUNC | O_CREAT | O_RDONLY);
-		write(fd[0], cmds->stdIn2, ft_strlen(cmds->stdIn2));
-		dup2(fd[0], 0);
-	}
+	if (ft_open2(cmds) == -1)
+		return (-1);
 	else
 		dup2(fd_0, 0);
 	if (cmds->stdOut != 0)
@@ -74,16 +70,18 @@ int	child_process(t_execute *cmds, int fd_0, int fd_1, t_pipex *pip)
 {
 	int	fd[2];
 	int	status;
-	
-	fd[0] = 0;
-	fd[1] = 1;
+
 	if (fd_open(cmds, fd_0, fd_1, fd) == -1)
 		return (-1);
 	// builtins
-	close_fd(pip);
+	close_fd_pip(pip);
 	fd_close(fd[0], fd[1], cmds);
-	status = execve(cmds->arguments[0], cmds->arguments, 0);
-	//free
+	status = execve(cmds->arguments[0], cmds->arguments, pip->info->envp);
+	free_all(cmds);
+	free(pip->pid);
+	pip->pid = NULL;
+	free(pip->pipe_fd);
+	pip->pipe_fd = NULL;
 	exit(status);
 }
 
@@ -100,12 +98,14 @@ void	parent_process(t_execute *cmds, t_pipex *pip)
 		if (!pip->pid[i])
 		{
 			if (i == 0)
-				child_process(cmds, pip->temp_0_fd, pip->pipe_fd[i * 2 +  1], pip);
+				child_process(cmds, pip->temp_0_fd, \
+							pip->pipe_fd[i * 2 + 1], pip);
 			else if (i == pip->num_pipes)
-				child_process(cmds, pip->pipe_fd[(i - 1) * 2], pip->temp_1_fd, pip);
+				child_process(cmds, pip->pipe_fd[(i - 1) * 2], \
+							pip->temp_1_fd, pip);
 			else
-				child_process(cmds, pip->pipe_fd[(i - 1) * 2],
-							pip->pipe_fd[i * 2 +  1], pip);
+				child_process(cmds, pip->pipe_fd[(i - 1) * 2], \
+							pip->pipe_fd[i * 2 + 1], pip);
 		}
 		cmds = cmds->next;
 	}

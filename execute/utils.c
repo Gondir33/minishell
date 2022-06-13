@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:35:31 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/13 11:08:44 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/14 00:24:58 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-char *ft_strjoin2(char *first, char *second)
+char	*ft_strjoin2(char *first, char *second)
 {
-	int	i;
-	char *tmp;
+	int		i;
+	char	*tmp;
 
 	i = 0;
- 	tmp = (char *)malloc(ft_strlen(first) + ft_strlen(second) + 1);
+	tmp = (char *)malloc(ft_strlen(first) + ft_strlen(second) + 1);
 	while (first[i])
 	{
 		tmp[i] = first[i];
@@ -50,14 +50,13 @@ char *ft_strjoin2(char *first, char *second)
 
 void	init_arg(t_execute *cmds, int num)
 {
-	int 	i;
+	int	i;
 
 	while (cmds)
 	{
 		i = 0;
 		cmds->arguments = (char **)malloc(sizeof(char **) * (num + 2));
 		cmds->arguments[i] = ft_strjoin2("/usr/bin/", cmds->command);
-
 		while (cmds->argument->next)
 		{
 			cmds->arguments[++i] = cmds->argument->argument;
@@ -79,35 +78,6 @@ int	ft_lstsize(t_execute *lst)
 	{
 		lst = lst->next;
 		++len;
-	}
-	return (len);
-}
-
-int	ft_error(char *cmd, char *mess)
-{
-	write(2, cmd, ft_strlen(cmd));
-	write(2, mess, ft_strlen(mess));
-	write(2, "\n", 1);
-	return (-1);
-}
-
-void fd_close(int fd_0, int fd_1, t_execute *cmds)
-{
-	if (cmds->stdIn != 0 || cmds->stdIn2 != 0)
-		close(fd_0);
-	if (cmds->stdOut != 0 || cmds->stdOut2 != 0)
-		close(fd_1);
-}
-
-int	ft_arg_size(t_arguments *arg)
-{
-	int	len;
-
-	len = 0;
-	while (arg)
-	{
-		++len;
-		arg= arg->next;
 	}
 	return (len);
 }
