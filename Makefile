@@ -19,7 +19,7 @@ SRC = ./pars/main.c\
 		./execute/execute.c\
 		./execute/pipex.c\
 		./execute/utils.c\
-
+		./execute/utils2.c\
 
 OBJ = $(SRC:.c=.o)
 

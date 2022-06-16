@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:23:14 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/14 00:27:59 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/16 11:48:52 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	init_pip(t_pipex *pip)
 	while (++i < pip->num_pipes)
 		if (pipe(pip->pipe_fd + i * 2) == -1)
 			return (-1);
-	pip->pid = malloc(sizeof(int) * (pip->num_pipes + 1));
+	pip->pid = malloc(sizeof(int) * (pip->num_pipes + 2));
+	pip->pid[pip->num_pipes + 1] = 0;
 	return (0);
 }

@@ -13,6 +13,7 @@ gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/start_parse.c -o 
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c execute/execute.c -o execute/execute.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c execute/pipex.c -o execute/pipex.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c execute/utils.c -o execute/utils.o
-gcc pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o execute/execute.o execute/pipex.o execute/utils.o -o minishell -lreadline -g -Wall -Wextra -Werror -o minishell
+gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c execute/utils2.c -o execute/utils2.o
+gcc pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o execute/execute.o execute/pipex.o execute/utils.o execute/utils2.o -o minishell -lreadline -g -Wall -Wextra -Werror -o minishell
 make: Leaving directory '/home/sbendu/projects/minishell'
  

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/14 00:37:41 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/16 12:30:17 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ static int	fd_open2(t_execute *cmds)
 			write(fd_pipe[1], cmds->stdIn2, ft_strlen(cmds->stdIn2));
 			close(fd_pipe[1]);
 			close(fd_pipe[0]);
-			free_all(cmds);
 			exit(0);
 		}
 		close(fd_pipe[1]);
-		waitpid(pid, &info->status, 0);
+		waitpid(pid, 0, 0);
 		dup2(fd_pipe[0], 1);
 		close(fd_pipe[0]);
 	}
@@ -47,7 +46,7 @@ static int	fd_open(t_execute *cmds, int fd_0, int fd_1, int *fd)
 			return (ft_error(cmds->stdIn, ": No such file or dirctory"));
 		dup2(fd[0], 0);
 	}
-	if (ft_open2(cmds) == -1)
+	if (fd_open2(cmds) == -1)
 		return (-1);
 	else
 		dup2(fd_0, 0);
@@ -119,7 +118,7 @@ int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 	init_pip(pip);
 	info->pid_child = pip->pid;
 	parent_process(cmds, pip);
-	close_fd(pip);
+	close_fd_pip(pip);
 	while (++i <= pip->num_pipes)
 	{
 		waitpid(pip->pid[i], &info->status, 0);
