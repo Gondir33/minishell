@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 16 13:50:28 2022
+# Make data base, printed on Thu Jun 16 18:54:53 2022
 
 # Variables
 
@@ -59,7 +59,7 @@ PATH = /home/sbendu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-90a4cbbe-7a48-4622-93d4-ecac6538467b.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-501069d0-898d-4ddf-b75e-830fa35d1742.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -85,7 +85,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = sbendu
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -165,11 +165,11 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2064, inode 81296): 10 files, no impossibilities.
-# pars (device 2064, inode 82336): 24 files, no impossibilities so far.
-# execute (device 2064, inode 81585): 9 files, no impossibilities so far.
+# . (device 2064, inode 81296): 9 files, no impossibilities.
+# pars (device 2064, inode 82336): 14 files, no impossibilities so far.
+# execute (device 2064, inode 81585): 5 files, no impossibilities so far.
 
-# 43 files, no impossibilities in 3 directories.
+# 28 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -212,7 +212,7 @@ all: minishell
 # Not a target:
 execute/:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-16 12:30:41.001789967
+#  Last modified 2022-06-16 13:50:34.630005105
 #  File has been updated.
 #  Successfully updated.
 
@@ -232,7 +232,7 @@ Makefile:
 pars/main.o: pars/main.c execute/ pars/main.c pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c execute/execute.c execute/pipex.c execute/utils.c execute/utils2.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'pars/main'
-#  Last modified 2022-06-16 12:30:40.561789969
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -250,7 +250,7 @@ pars/main.o: pars/main.c execute/ pars/main.c pars/free_structure.c pars/initial
 # automatic
 # ^ := pars/main.c execute/ pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c execute/execute.c execute/pipex.c execute/utils.c execute/utils2.c
 # automatic
-# ? := execute/
+# ? := pars/main.c execute/ pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c execute/execute.c execute/pipex.c execute/utils.c execute/utils2.c
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/16=6%
 #  recipe to execute (from 'Makefile', line 32):
@@ -302,7 +302,7 @@ pars/parse_pipe.o:
 
 minishell: pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o execute/execute.o execute/pipex.o execute/utils.o execute/utils2.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-16 12:30:41.051789967
+#  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -460,12 +460,12 @@ pars/parse_quotes.c:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 82 / storage = 1109 B / avg = 13 B
-# current buf: size = 8162 B / used = 1109 B / count = 82 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 68 / storage = 922 B / avg = 13 B
+# current buf: size = 8162 B / used = 922 B / count = 68 / avg = 13 B
 
-# strcache performance: lookups = 138 / hit rate = 40%
+# strcache performance: lookups = 123 / hit rate = 44%
 # hash-table stats:
-# Load=82/8192=1%, Rehash=0, Collisions=2/138=1%
-# Finished Make data base on Thu Jun 16 13:50:28 2022
+# Load=68/8192=1%, Rehash=0, Collisions=2/123=2%
+# Finished Make data base on Thu Jun 16 18:54:53 2022
 
  
