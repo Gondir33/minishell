@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/16 12:30:37 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/19 10:01:20 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 static int	fd_open(int **fd, t_execute *cmds)
 {
-	if (cmds->stdIn != 0)
+	if (cmds->stdin != 0)
 	{
-		(*fd)[0] = open(cmds->stdIn, O_RDONLY);
+		(*fd)[0] = open(cmds->stdin, O_RDONLY);
 		if ((*fd)[0] < 0)
-			return (ft_error(cmds->stdIn, ": No such file or directory"));
-		if (cmds->stdIn != 0)
+			return (ft_error(cmds->stdin, ": No such file or directory"));
+		if (cmds->stdin != 0)
 			dup2((*fd)[0], 0);
 	}
-	else if (cmds->stdIn2 != 0)
+	else if (cmds->stdin2 != 0)
 	{
 		if (pipe(*(fd) + 2) == -1)
 			return (-1);
 		if (!fork())
 		{
-			write((*fd)[3], cmds->stdIn2, ft_strlen(cmds->stdIn2));
+			write((*fd)[3], cmds->stdin2, ft_strlen(cmds->stdin2));
 			close((*fd)[3]);
 			close((*fd)[2]);
 			exit(0);
@@ -45,7 +45,7 @@ static void	child_no_pipe(t_execute *cmds, t_info *info, int *fd, int fd_pipe)
 	int	flag;
 
 	flag = 1;
-	if (cmds->stdOut != 0 || cmds->stdOut2 != 0)
+	if (cmds->stdout != 0 || cmds->stdout2 != 0)
 		dup2(fd[1], 1);
 	//bultins
 	info->pid_child = (int *)malloc(sizeof(int) * 2);
@@ -56,7 +56,7 @@ static void	child_no_pipe(t_execute *cmds, t_info *info, int *fd, int fd_pipe)
 		if (!info->pid_child[0])
 		{
 			fd_close(fd[0], fd[1], cmds);
-			if (cmds->stdIn2)
+			if (cmds->stdin2)
 				close(fd_pipe);
 			info->status = execve(cmds->arguments[0], \
 				cmds->arguments, info->envp);
@@ -77,12 +77,12 @@ int	no_pipe_exe(t_execute *cmds, t_info *info)
 		return (ft_error("Erorr:", "fd_malloc_error"));
 	if (fd_open(&fd, cmds) == -1)
 		return (-1);
-	if (cmds->stdOut != 0)
-		fd[1] = open(cmds->stdOut, O_WRONLY | O_TRUNC | O_CREAT);
-	else if (cmds->stdOut2 != 0)
-		fd[1] = open(cmds->stdOut2, O_WRONLY | O_APPEND | O_CREAT);
+	if (cmds->stdout != 0)
+		fd[1] = open(cmds->stdout, O_WRONLY | O_TRUNC | O_CREAT);
+	else if (cmds->stdout2 != 0)
+		fd[1] = open(cmds->stdout2, O_WRONLY | O_APPEND | O_CREAT);
 	child_no_pipe(cmds, info, fd, fd[2]);
-	if (cmds->stdIn2)
+	if (cmds->stdin2)
 		close(fd[2]);
 	wait(&info->status);
 	free(info->pid_child);

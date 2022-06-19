@@ -16,6 +16,10 @@ SRC = ./pars/main.c\
 		./pars/parse_pipe.c\
 		./pars/parse_quotes.c\
 		./pars/start_parse.c\
+		./pars/env_utils.c\
+		./pars/pars_utils.c\
+		./pars/pars_utils2.c\
+		./pars/pars_utils3.c\
 		./execute/execute.c\
 		./execute/pipex.c\
 		./execute/utils.c\

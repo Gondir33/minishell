@@ -6,38 +6,55 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:02:33 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/13 10:41:46 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/19 10:11:35 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int size_line_env(char *line)
+int	final_size_dquotes(char	*line, t_execute *info)
 {
-	int	i;
+	char	*key;
+	int		i;
 
 	i = 0;
-	while (((line[i] <= 9 && line[i] >= 13) 
-		|| line[i] != 32) && line[i] && line[i] != '\"' && line[i] != '$')
+	if ((line[1] == '?' && line[2] == '\0')
+		|| (line[2] >= 9 && line[2] <= 13) || line[2] == 32)
+		i = status_size(info->info->status);
+	else
 	{
-		i++;
+		while ((*line <= 9 && *line >= 13) || (*line != 32
+			&& *line && *line != '\"' && *line != '\''))
+		{
+			if (*line == '$')
+			{
+				if (((line[1] >= 9 && line[1] <= 13) || line[1] == 32)
+					|| line[1] == '\0' || line[1] == '\"' || line[1] == '\'')
+					i++;
+				key = get_key(++line);
+				i = i + ft_strlen(get_value(info, key));
+				free(key);
+			}
+			line++;
+		}
 	}
 	return (i);
 }
 
-int	size_line_dquotes(char *str)
+int	size_line_dquotes(char *str, t_execute *info)
 {
 	int	i;
 
 	i = 0;
 	if (str == NULL)
-		return 0;
+		return (0);
 	while (*str && *str != '\"')
 	{
 		if (*str == '$')
 		{
-			while (((*str <= 9 && *str >= 13) 
-				|| *str != 32) && *str && *str != '\"')
+			i = i + final_size_dquotes(str, info);
+			while (((*str <= 9 && *str >= 13)
+					|| *str != 32) && *str && *str != '\"' && *str != '\'')
 				str++;
 		}
 		else
@@ -49,25 +66,17 @@ int	size_line_dquotes(char *str)
 	return (i);
 }
 
-char *skip_lines(t_execute *info, char *line, int *i)
+char	*skip_lines(t_execute *info, char *line, int *i)
 {
-	while (*line && *line != '\"')
-	{
-		if (line[1] == '$' || line[1] == '\0' || line[1] == '\"' ||
-			(line[1] >= 9 && line[1] <= 13) || line[1] == 32)
-		{
-			*i = single_dollar(info, line, *i);
-			line++;
-		}
-		else
-		{
-			*i = parse_env2(info, line, *i);
-			line++;
-			while (((*line <= 9 && *line >= 13) 
-				|| *line != 32) && *line && *line != '\"' && *line != '$')
-			line++;
-		}
-	}
+	if ((line[1] >= 9 && line[1] <= 13) || line[1] == 32
+		|| line[1] == '\0' || line[1] == '\"' || line[1] == '\'')
+		line = single_dollar(info, line, i);
+	else if ((line[1] == '?' && line[2] == '\0')
+		|| (line[2] >= 9 && line[2] <= 13)
+		|| line[2] == 32 || line[2] == '\"' || line[2] == '\'')
+		line = current_status(info, line, i);
+	else
+		line = get_env(info, line, i);
 	return (line);
 }
 
@@ -93,17 +102,15 @@ char	*parse_double_quotes2(t_execute	*info, char	*line, int size)
 
 char	*parse_double_quotes(t_execute *info, char *line)
 {
-	int size;
+	int	size;
 
 	if (*line == '\"')
 		return (++line);
 	else
 	{
-		size = final_size_dquotes(line) + size_line_dquotes(line);
+		size = size_line_dquotes(line, info);
 		if (size != 0)
 		{
-			if (info->argument->argument != NULL)
-				new_argument(info);
 			info->argument->argument = malloc(size + 1);
 			line = parse_double_quotes2(info, line, size);
 		}
@@ -111,7 +118,8 @@ char	*parse_double_quotes(t_execute *info, char *line)
 		{
 			while (*line && *line != '\"')
 				line++;
+			info->argument->argument = NULL;
 		}
 	}
-	return (++line);	
+	return (++line);
 }

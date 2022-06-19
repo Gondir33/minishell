@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 00:23:14 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/16 11:48:52 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/19 10:00:50 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_error(char *cmd, char *mess)
 
 void	fd_close(int fd_0, int fd_1, t_execute *cmds)
 {
-	if (cmds->stdIn != 0 || cmds->stdIn2 != 0)
+	if (cmds->stdin != 0 || cmds->stdin2 != 0)
 		close(fd_0);
-	if (cmds->stdOut != 0 || cmds->stdOut2 != 0)
+	if (cmds->stdout != 0 || cmds->stdout2 != 0)
 		close(fd_1);
 }
 

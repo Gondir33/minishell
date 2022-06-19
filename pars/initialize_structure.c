@@ -3,18 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structure.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:24:52 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/13 09:55:59 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/18 13:10:06 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_execute *first_execute(void)
+void	init_info(t_info *info, char **envp)
 {
-	t_execute *tmp;
+	info->envp = envp;
+	info->status = 0;
+	info->l_envp = first_lenvp();
+}
+
+t_execute	*first_execute(void)
+{
+	t_execute	*tmp;
 
 	tmp = malloc(sizeof(t_execute));
 	tmp->head = tmp;
@@ -22,16 +29,16 @@ t_execute *first_execute(void)
 	tmp->argument = NULL;
 	tmp->command = NULL;
 	tmp->option = NULL;
-	tmp->stdIn = NULL;
-	tmp->stdIn2 = NULL;
-	tmp->stdOut = NULL;
-	tmp->stdOut2 = NULL;
+	tmp->stdin = NULL;
+	tmp->stdin2 = NULL;
+	tmp->stdout = NULL;
+	tmp->stdout2 = NULL;
 	return (tmp);
 }
 
 t_execute	*new_execute(t_execute *info)
 {
-	t_execute *tmp;
+	t_execute	*tmp;
 
 	tmp = malloc(sizeof(t_execute));
 	tmp->head = info->head;
@@ -39,17 +46,17 @@ t_execute	*new_execute(t_execute *info)
 	tmp->argument = NULL;
 	tmp->command = NULL;
 	tmp->option = NULL;
-	tmp->stdIn = NULL;
-	tmp->stdIn2 = NULL;
-	tmp->stdOut = NULL;
-	tmp->stdOut2 = NULL;
+	tmp->stdin = NULL;
+	tmp->stdin2 = NULL;
+	tmp->stdout = NULL;
+	tmp->stdout2 = NULL;
 	info->next = tmp;
 	return (tmp);
 }
 
-void first_argument(t_execute *info)
+void	first_argument(t_execute *info)
 {
-	t_arguments *tmp;
+	t_arguments	*tmp;
 
 	tmp = malloc(sizeof(t_arguments));
 	tmp->head = tmp;
@@ -60,7 +67,7 @@ void first_argument(t_execute *info)
 
 void	new_argument(t_execute *info)
 {
-	t_arguments *tmp;
+	t_arguments	*tmp;
 
 	tmp = malloc(sizeof(t_arguments));
 	tmp->head = info->argument->head;

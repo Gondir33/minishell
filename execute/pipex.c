@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/16 12:30:17 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/19 10:01:37 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static int	fd_open2(t_execute *cmds)
 	int	fd_pipe[2];
 	int	pid;
 
-	if (cmds->stdIn2 != 0)
+	if (cmds->stdin2 != 0)
 	{
 		if (pipe(fd_pipe) == -1)
 			return (-1);
 		pid = fork();
 		if (!pid)
 		{
-			write(fd_pipe[1], cmds->stdIn2, ft_strlen(cmds->stdIn2));
+			write(fd_pipe[1], cmds->stdin2, ft_strlen(cmds->stdin2));
 			close(fd_pipe[1]);
 			close(fd_pipe[0]);
 			exit(0);
@@ -39,25 +39,25 @@ static int	fd_open2(t_execute *cmds)
 
 static int	fd_open(t_execute *cmds, int fd_0, int fd_1, int *fd)
 {
-	if (cmds->stdIn != 0)
+	if (cmds->stdin != 0)
 	{
-		fd[0] = open(cmds->stdIn, O_RDONLY);
+		fd[0] = open(cmds->stdin, O_RDONLY);
 		if (fd[0] < 0)
-			return (ft_error(cmds->stdIn, ": No such file or dirctory"));
+			return (ft_error(cmds->stdin, ": No such file or dirctory"));
 		dup2(fd[0], 0);
 	}
 	if (fd_open2(cmds) == -1)
 		return (-1);
 	else
 		dup2(fd_0, 0);
-	if (cmds->stdOut != 0)
+	if (cmds->stdout != 0)
 	{
-		fd[1] = open(cmds->stdIn, O_WRONLY | O_TRUNC | O_CREAT);
+		fd[1] = open(cmds->stdin, O_WRONLY | O_TRUNC | O_CREAT);
 		dup2(fd[1], 1);
 	}
-	else if (cmds->stdOut2 != 0)
+	else if (cmds->stdout2 != 0)
 	{
-		fd[1] = open(cmds->stdIn2, O_WRONLY | O_APPEND | O_CREAT);
+		fd[1] = open(cmds->stdin2, O_WRONLY | O_APPEND | O_CREAT);
 		dup2(fd[1], 1);
 	}
 	else

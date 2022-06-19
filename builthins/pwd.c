@@ -6,13 +6,13 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:21:53 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/10 19:06:38 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/18 11:11:57 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execute/execute.h"
 
-int	pwd(t_execute *cmds, t_info *info)
+int	pwd(t_info *info)
 {
 	char	cwd[1024];
 

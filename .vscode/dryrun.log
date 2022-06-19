@@ -1,8 +1,5 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/sbendu/projects/minishell'
-gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/main.c -o pars/main.o
-gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/free_structure.c -o pars/free_structure.o
-gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/initialize_structure.c -o pars/initialize_structure.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/parse_double_quotes.c -o pars/parse_double_quotes.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/parse_env.c -o pars/parse_env.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/parse_input.c -o pars/parse_input.o
@@ -10,10 +7,14 @@ gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/parse_output.c -o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/parse_pipe.c -o pars/parse_pipe.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/parse_quotes.c -o pars/parse_quotes.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/start_parse.c -o pars/start_parse.o
+gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/env_utils.c -o pars/env_utils.o
+gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/pars_utils.c -o pars/pars_utils.o
+gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/pars_utils2.c -o pars/pars_utils2.o
+gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c pars/pars_utils3.c -o pars/pars_utils3.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c execute/execute.c -o execute/execute.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c execute/pipex.c -o execute/pipex.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c execute/utils.c -o execute/utils.o
 gcc -lreadline -g -Wall -Wextra -Werror -I ./execute/  -c execute/utils2.c -o execute/utils2.o
-gcc pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o execute/execute.o execute/pipex.o execute/utils.o execute/utils2.o -o minishell -lreadline -g -Wall -Wextra -Werror -o minishell
+gcc pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o pars/env_utils.o pars/pars_utils.o pars/pars_utils2.o pars/pars_utils3.o execute/execute.o execute/pipex.o execute/utils.o execute/utils2.o -o minishell -lreadline -g -Wall -Wextra -Werror -o minishell
 make: Leaving directory '/home/sbendu/projects/minishell'
  
