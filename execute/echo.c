@@ -6,11 +6,11 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:21:51 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/10 19:06:35 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/19 15:30:53 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execute/execute.h"
+#include "execute.h"
 
 int	echo(t_execute *cmds, t_info *info)
 {
@@ -19,11 +19,11 @@ int	echo(t_execute *cmds, t_info *info)
 	
 	i = 0;
 	len = ft_arg_len(cmds->arguments);
-	if (cmds->option == 1)
+	if (ft_strncmp(cmds->option, "-n", 2) == 0)
 	{
 		while (++i < len - 1)
 			printf("%s ", cmds->arguments[i]);
-		if (cmds->arguments[i]);
+		if (cmds->arguments[i])
 			printf("%s", cmds->arguments[i]);
 	}
 	else

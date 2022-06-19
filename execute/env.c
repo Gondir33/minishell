@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 20:53:11 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/14 21:32:04 by sbendu           ###   ########.fr       */
+/*   Created: 2022/05/31 20:59:56 by sbendu            #+#    #+#             */
+/*   Updated: 2022/06/19 12:43:09 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execute/execute.h"
+#include "execute.h"
 
-int ft_arg_len(char **arg)
+int	env(t_info *info)
 {
-	int	i;
+	t_list	*lst;
 
-	i = 0;
-	while (arg[i])
-		i++;
-	return (i);
+	lst = info->l_envp;
+	lst = lst->head;
+	while (lst)
+	{
+		printf("%s=%s\n", lst->key, lst->value);
+		lst = lst->next;
+	}
+	info->status = 0;
+	return (0);
 }

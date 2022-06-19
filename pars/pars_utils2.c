@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 13:05:41 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/19 10:14:22 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/19 12:40:00 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*itoa(int number)
 	i = 0;
 	size = status_size(number);
 	string = malloc(size + 1);
+	if (number == 0)
+		string[i++] = '0';
 	while (number > 0)
 	{
 		string[size - i - 1] = (number % 10) + '0';
@@ -44,6 +46,8 @@ int	status_size(int number)
 	int	i;
 
 	i = 0;
+	if (number == 0)
+		return (1);
 	while (number > 0)
 	{
 		number = number / 10;

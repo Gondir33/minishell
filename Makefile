@@ -24,7 +24,15 @@ SRC = ./pars/main.c\
 		./execute/pipex.c\
 		./execute/utils.c\
 		./execute/utils2.c\
-
+		./execute/pwd.c\
+		./execute/builtinsutils.c\
+		./execute/cd.c\
+		./execute/echo.c\
+		./execute/env.c\
+		./execute/exit.c\
+		./execute/export.c\
+		./execute/unset.c\
+		
 OBJ = $(SRC:.c=.o)
 
 all:	$(NAME)

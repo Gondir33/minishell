@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:58:47 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/18 23:22:43 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/19 23:07:45 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,13 @@ int main(int ac, char **av, char *envp[])
 
 	info = first_execute();
 	printDir();
+	// signal(SIGINT, handle_ctrl_c);
+	// signal(SIGQUIT, handle_ctrl_qu);
+	// signal(EOF, handle_ctrl_d);
+	while(1)
+	{
 	init_info(&information, envp);
-	get_envp(&information, envp);
+		get_envp(&information, envp);
 	info->info = &information;
 	line = ft_readline("> ");
 	start_parse(info, line);
@@ -71,5 +76,6 @@ int main(int ac, char **av, char *envp[])
 	*/
 	execute(info, &information);
 	free_all(info);
+	}
 	exit(0);
 }

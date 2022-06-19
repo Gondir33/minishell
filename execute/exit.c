@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 20:59:56 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/10 19:06:36 by sbendu           ###   ########.fr       */
+/*   Created: 2022/05/31 21:03:41 by sbendu            #+#    #+#             */
+/*   Updated: 2022/06/19 15:23:27 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execute/execute.h"
+#include "execute.h"
 
-int	env(t_execute *cmds, t_info *info)
+int ft_exit(t_execute *cmds, t_info *info)
 {
-	int	i;
+	int	status;
 
-	i = -1;
-	while (info->envp[++i])
-		printf("%s\n", info->envp[i]);
-	info->status = 0;
-	return (0);
+	status = info->status;
+	free_all(cmds);
+	exit(status);
 }

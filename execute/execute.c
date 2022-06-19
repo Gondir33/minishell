@@ -6,11 +6,30 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 10:01:20 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/19 15:23:58 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+
+int	ft_builtins(t_execute *cmds, t_info *info)
+{
+	if (ft_strncmp(cmds->command, "echo", ft_strlen(cmds->command)) == 0)
+		return (echo(cmds, info));
+	if (ft_strncmp(cmds->command, "cd", ft_strlen(cmds->command)) == 0)
+		return (cd(cmds, info));
+	if (ft_strncmp(cmds->command, "pwd", ft_strlen(cmds->command)) == 0)
+		return (pwd(info));
+	if (ft_strncmp(cmds->command, "export", ft_strlen(cmds->command)) == 0)
+		return (export(cmds, info));
+	if (ft_strncmp(cmds->command, "unset", ft_strlen(cmds->command)) == 0)
+		return (unset(cmds, info));
+	if (ft_strncmp(cmds->command, "env", ft_strlen(cmds->command)) == 0)
+		return (env(info));
+	if (ft_strncmp(cmds->command, "exit", ft_strlen(cmds->command)) == 0)
+		return (ft_exit(cmds, info));
+	return (6);	
+}
 
 static int	fd_open(int **fd, t_execute *cmds)
 {
@@ -42,14 +61,11 @@ static int	fd_open(int **fd, t_execute *cmds)
 
 static void	child_no_pipe(t_execute *cmds, t_info *info, int *fd, int fd_pipe)
 {
-	int	flag;
-
-	flag = 1;
 	if (cmds->stdout != 0 || cmds->stdout2 != 0)
 		dup2(fd[1], 1);
-	//bultins
+	info->status = ft_builtins(cmds, info);
 	info->pid_child = (int *)malloc(sizeof(int) * 2);
-	if (flag == 1)
+	if (info->status == 6)
 	{
 		info->pid_child[0] = fork();
 		info->pid_child[1] = 0;
@@ -100,8 +116,8 @@ int	execute(t_execute *cmds, t_info *info)
 	init_arg(cmds, ft_arg_size(cmds->argument));
 	if (pip.num_pipes == 0)
 		info->status = no_pipe_exe(cmds, info);
-	// else
-	// 	info->status = pipex(info, cmds, &pip);
+	else
+		info->status = pipex(info, cmds, &pip);
 	dup2(pip.temp_0_fd, 0);
 	dup2(pip.temp_1_fd, 1);
 	return (0);

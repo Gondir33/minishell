@@ -1,14 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.c                                            :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 10:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/18 11:11:11 by sbendu           ###   ########.fr       */
+/*   Created: 2022/05/31 20:21:53 by sbendu            #+#    #+#             */
+/*   Updated: 2022/06/19 12:43:35 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../execute/execute.h"
+#include "execute.h"
 
+int	pwd(t_info *info)
+{
+	char	cwd[1024];
+
+	getcwd(cwd, sizeof(cwd));
+	printf("%s\n", cwd);
+	info->status = 0;
+	return(0);
+}
