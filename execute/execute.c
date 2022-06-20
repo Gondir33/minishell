@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 20:12:32 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:14:51 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_builtins(t_execute *cmds, t_info *info)
 		return (env(info));
 	if (ft_strncmp(cmds->command, "exit", ft_strlen(cmds->command)) == 0)
 		return (ft_exit(cmds, info));
-	return (6);	
+	return (6);
 }
 
 static int	fd_open(int **fd, t_execute *cmds)

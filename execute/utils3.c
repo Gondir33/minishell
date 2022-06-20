@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 09:38:55 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 20:18:53 by sbendu           ###   ########.fr       */
+/*   Created: 2022/06/20 21:08:56 by sbendu            #+#    #+#             */
+/*   Updated: 2022/06/20 21:09:06 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-int	cd(t_execute *cmds, t_info *info)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (ft_arg_len(cmds->arguments) > 2)
-		return (ft_error("cd: ", "too many arguments"));
-	info->status = chdir(cmds->arguments[1]);
-	if (info->status == -1)
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (i < len && big[i])
 	{
-		info->status = 1;
-		return (ft_error(cmds->arguments[1], ": No such file or directory"));
+		j = 0;
+		while ((little[j] == big[i + j]) && (little[j] != '\0'
+				&& (i + j < len)))
+			j++;
+		if (little[j] == '\0')
+			return ((char *)(big + i));
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

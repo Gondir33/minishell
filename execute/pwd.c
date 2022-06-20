@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:21:53 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 12:43:35 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:22:37 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int	pwd(t_info *info)
 	getcwd(cwd, sizeof(cwd));
 	printf("%s\n", cwd);
 	info->status = 0;
-	return(0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 20:09:54 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:39:27 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ int	child_process(t_execute *cmds, int fd_0, int fd_1, t_pipex *pip)
 		return (-1);
 	dup2(fd_0, STDIN_FILENO);
 	dup2(fd_1, STDOUT_FILENO);
-	status = ft_builtins(cmds, cmds->info);
 	close_fd_pip(pip);
 	fd_close(fd[0], fd[1], cmds);
+	status = ft_builtins(cmds, cmds->info);
 	if (status == 6)
 	{
 		status = execve(cmds->arguments[0], cmds->arguments, pip->info->envp);

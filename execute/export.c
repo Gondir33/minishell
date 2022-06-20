@@ -6,13 +6,13 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:56:05 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 18:00:02 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:23:19 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-int check_valid2(char *arg)
+int	check_valid2(char *arg)
 {
 	int	j;
 	int	flag;
@@ -35,7 +35,7 @@ int check_valid2(char *arg)
 	return (0);
 }
 
-int check_valid1(char *arg)
+int	check_valid1(char *arg)
 {
 	int	j;
 
@@ -75,8 +75,8 @@ int	export(t_execute *cmds, t_info *info)
 	i = 0;
 	while (cmds->arguments[++i])
 	{
-		if (check_valid1(cmds->arguments[i]) == -1 || check_valid2(cmds->arguments[i]) == -1)
-			// || check_valid3(cmds->arguments[i]) == -1)
+		if (check_valid1(cmds->arguments[i]) == -1 \
+		|| check_valid2(cmds->arguments[i]) == -1)
 			return (ft_error(cmds->arguments[i], " : not a valid identifier"));
 	}
 	i = 0;

@@ -6,13 +6,13 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 11:26:10 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 17:20:53 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:23:36 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-void sighandler(int signal)
+void	sighandler(int signal)
 {
 	if (signal == SIGINT)
 	{
@@ -24,7 +24,7 @@ void	handle_ctrl_c(int signal, void *ptr)
 {
 	static int	*saved = NULL;
 	int			i;
-	
+
 	if (signal == 5000)
 		saved = ptr;
 	if (signal == SIGINT)
@@ -41,7 +41,6 @@ void	handle_ctrl_c(int signal, void *ptr)
 			while (saved[++i] != 0)
 				kill(saved[i], SIGTERM);
 		}
-
 	}
 }
 
@@ -49,7 +48,6 @@ void	handle_ctrl_c(int signal, void *ptr)
 // {
 // 	static int	*saved = NULL;
 // 	int			i;
-	
 // 	if (signal == 5000)
 // 		saved = ptr;
 // 	if (signal == EOF)

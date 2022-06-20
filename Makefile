@@ -33,7 +33,10 @@ SRC = ./pars/main.c\
 		./execute/export.c\
 		./execute/unset.c\
 		./execute/signal.c\
-		
+		./execute/path.c\
+		./execute/utils3.c\
+		./execute/ft_split.c\
+
 OBJ = $(SRC:.c=.o)
 
 all:	$(NAME)

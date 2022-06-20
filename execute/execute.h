@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 16:42:00 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 22:31:37 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ char	*ft_strrcut(char *arg, char c);
 char	*ft_strcut(char *arg, char c);
 int		check_key(t_list *lst, char *key, char *value);
 int		add_envp(t_list *lst, char *key, char *value);
-int 	ft_arg_len(char **arg);
-int 	cd(t_execute *cmds, t_info *info);
+int		ft_arg_len(char **arg);
+int		cd(t_execute *cmds, t_info *info);
 int		echo(t_execute *cmds, t_info *info);
-int 	ft_exit(t_execute *cmds, t_info *info);
+int		ft_exit(t_execute *cmds, t_info *info);
 int		export(t_execute *cmds, t_info *info);
-int 	check_valid1(char *arg);
-int 	check_valid2(char *arg);
+int		check_valid1(char *arg);
+int		check_valid2(char *arg);
 int		pwd(t_info *info);
 int		unset(t_execute *cmds, t_info *info);
 int		check_first(t_info *info, char *key);
@@ -53,9 +53,13 @@ void	fd_close(int fd_0, int fd_1, t_execute *cmds);
 int		ft_arg_size(t_arguments *arg);
 void	close_fd_pip(t_pipex *pip);
 int		init_pip(t_pipex *pip);
+char	**ft_split(char const *s, char c);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
+char	*get_cmd(t_info *info, char *command);
+char	**ft_tabfree(char	**tab);
 
 //signal
-void 	sighandler(int signal);
+void	sighandler(int signal);
 void	handle_ctrl_c(int signal, void *ptr);
 // int	handle_ctrl_d(const int signal, int *ptr);
 

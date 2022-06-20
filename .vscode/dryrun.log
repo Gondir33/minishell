@@ -19,7 +19,6 @@ gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/pipex.c -o exe
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/utils.c -o execute/utils.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/utils2.c -o execute/utils2.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/pwd.c -o execute/pwd.o
- 
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/builtinsutils.c -o execute/builtinsutils.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/cd.c -o execute/cd.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/echo.c -o execute/echo.o
@@ -27,6 +26,10 @@ gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/env.c -o execu
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/exit.c -o execute/exit.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/export.c -o execute/export.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/unset.c -o execute/unset.o
-gcc pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o pars/env_utils.o pars/pars_utils.o pars/pars_utils2.o pars/pars_utils3.o execute/execute.o execute/pipex.o execute/utils.o execute/utils2.o execute/pwd.o execute/builtinsutils.o execute/cd.o execute/echo.o execute/env.o execute/exit.o execute/export.o execute/unset.o execute/signal.o -o minishell -lreadline -g -Wall -Werror -Wextra -o minishell
+gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/signal.c -o execute/signal.o
+gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/path.c -o execute/path.o
+gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/utils3.c -o execute/utils3.o
+gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/ft_split.c -o execute/ft_split.o
+gcc pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o pars/env_utils.o pars/pars_utils.o pars/pars_utils2.o pars/pars_utils3.o execute/execute.o execute/pipex.o execute/utils.o execute/utils2.o execute/pwd.o execute/builtinsutils.o execute/cd.o execute/echo.o execute/env.o execute/exit.o execute/export.o execute/unset.o execute/signal.o execute/path.o execute/utils3.o execute/ft_split.o -o minishell -lreadline -g -Wall -Werror -Wextra -o minishell
 make: Leaving directory '/home/sbendu/projects/minishell'
  

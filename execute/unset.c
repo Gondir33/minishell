@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 18:23:09 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:21:56 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_first(t_info *info, char *key)
 {
 	t_list	*tmp;
 	t_list	*head;
-	
+
 	info->l_envp = info->l_envp->head;
 	if (ft_strncmp(info->l_envp->key, key, ft_strlen(key)) == 0)
 	{
@@ -36,10 +36,10 @@ int	check_first(t_info *info, char *key)
 	return (1);
 }
 
-static void check_list(t_info *info, char *key)
+static void	check_list(t_info *info, char *key)
 {
 	t_list	*tmp;
-	
+
 	while (info->l_envp->next)
 	{
 		if (info->l_envp == info->l_envp->head)

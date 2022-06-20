@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:08:33 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 14:40:15 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:17:04 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ char	*ft_strrcut(char *arg, char c)
 		s[++j] = arg[i];
 	return (s);
 }
+
 char	*ft_strcut(char *arg, char c)
 {
 	int		len;
 	char	*s;
 	int		i;
-	
+
 	len = -1;
 	while (arg[++len] != c)
 		;
@@ -67,7 +68,7 @@ int	check_key(t_list *lst, char *key, char *value)
 	return (-1);
 }
 
-int add_envp(t_list *lst, char *key, char *value)
+int	add_envp(t_list *lst, char *key, char *value)
 {
 	lst = lst->head;
 	while (lst->next)
@@ -82,7 +83,7 @@ int add_envp(t_list *lst, char *key, char *value)
 	return (0);
 }
 
-int ft_arg_len(char **arg)
+int	ft_arg_len(char **arg)
 {
 	int	i;
 

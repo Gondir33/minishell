@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:57:39 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 19:58:01 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 22:31:48 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ char	*ft_strjoin2(char *first, char *second)
 
 void	init_arg(t_execute *cmds, int num)
 {
-	int	i;
-
+	int		i;
+	t_info	*info;
+	
+	info = cmds->info;
 	while (cmds)
 	{
 		i = 0;
 		cmds->arguments = (char **)malloc(sizeof(char **) * (num + 2));
-		cmds->arguments[i] = ft_strjoin2("/usr/bin/", cmds->command);
+		cmds->arguments[i] = get_cmd(info, cmds->command);
 		while (cmds->argument->next)
 		{
 			cmds->arguments[++i] = cmds->argument->argument;

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:24:52 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/20 13:35:17 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 22:24:10 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_execute	*first_execute(void)
 	tmp->stdin2 = NULL;
 	tmp->stdout = NULL;
 	tmp->stdout2 = NULL;
+	tmp->arguments = NULL;
 	return (tmp);
 }
 
