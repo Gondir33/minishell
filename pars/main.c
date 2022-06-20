@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:58:47 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/19 23:07:45 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:10:13 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,19 @@ int main(int ac, char **av, char *envp[])
 	(void)av;
 	char *line;
 
-	info = first_execute();
-	printDir();
-	// signal(SIGINT, handle_ctrl_c);
-	// signal(SIGQUIT, handle_ctrl_qu);
-	// signal(EOF, handle_ctrl_d);
+	init_info(&information, envp);
+	get_envp(&information, envp);
+	signal(SIGINT, sighandler);
+	signal(SIGQUIT, SIG_IGN);
+	// signal(EOF, sighandler);
 	while(1)
 	{
-	init_info(&information, envp);
-		get_envp(&information, envp);
-	info->info = &information;
-	line = ft_readline("> ");
-	start_parse(info, line);
+		info = first_execute();
+		printDir();
+		handle_ctrl_c(5000, information.pid_child);
+		info->info = &information;
+		line = ft_readline("> ");
+		start_parse(info, line);
 	/*
 	while (info != NULL)
 	{
@@ -74,8 +75,8 @@ int main(int ac, char **av, char *envp[])
 		info = info->next;		
 	}
 	*/
-	execute(info, &information);
-	free_all(info);
+		execute(info, &information);
+		free_all(info);
 	}
 	exit(0);
 }

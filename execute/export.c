@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:56:05 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 15:07:31 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 18:00:02 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,22 @@ int check_valid1(char *arg)
 	return (-1);
 }
 
+int	check_valid3(char *arg)
+{
+	int	j;
+
+	j = 0;
+	while (arg[j] && arg[j] != '=')
+	{
+		if ((arg[j] <= '0' || arg[j] >= '9') \
+		&& (arg[j] <= 'a' || arg[j] >= 'z') \
+		&& (arg[j] <= 'z' || arg[j] >= 'Z'))
+			return (-1);
+		j++;
+	}
+	return (0);
+}
+
 int	export(t_execute *cmds, t_info *info)
 {
 	int		i;
@@ -60,6 +76,7 @@ int	export(t_execute *cmds, t_info *info)
 	while (cmds->arguments[++i])
 	{
 		if (check_valid1(cmds->arguments[i]) == -1 || check_valid2(cmds->arguments[i]) == -1)
+			// || check_valid3(cmds->arguments[i]) == -1)
 			return (ft_error(cmds->arguments[i], " : not a valid identifier"));
 	}
 	i = 0;

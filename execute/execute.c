@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 15:23:58 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:12:32 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static void	child_no_pipe(t_execute *cmds, t_info *info, int *fd, int fd_pipe)
 			free_all(cmds);
 			exit(info->status);
 		}
+		wait(&info->status);
 	}
 	fd_close(fd[0], fd[1], cmds);
 }
@@ -90,7 +91,7 @@ int	no_pipe_exe(t_execute *cmds, t_info *info)
 
 	fd = (int *)malloc(sizeof(int) * 4);
 	if (!fd)
-		return (ft_error("Erorr:", "fd_malloc_error"));
+		return (ft_error("Error:", "fd_malloc_error"));
 	if (fd_open(&fd, cmds) == -1)
 		return (-1);
 	if (cmds->stdout != 0)
@@ -100,13 +101,12 @@ int	no_pipe_exe(t_execute *cmds, t_info *info)
 	child_no_pipe(cmds, info, fd, fd[2]);
 	if (cmds->stdin2)
 		close(fd[2]);
-	wait(&info->status);
 	free(info->pid_child);
 	free(fd);
 	return (info->status);
 }
 
-int	execute(t_execute *cmds, t_info *info)
+void	execute(t_execute *cmds, t_info *info)
 {
 	t_pipex	pip;
 
@@ -115,10 +115,16 @@ int	execute(t_execute *cmds, t_info *info)
 	pip.num_pipes = ft_lstsize(cmds) - 1;
 	init_arg(cmds, ft_arg_size(cmds->argument));
 	if (pip.num_pipes == 0)
-		info->status = no_pipe_exe(cmds, info);
+	{
+		no_pipe_exe(cmds, info);
+		if (info->status == 65280)
+		{
+			ft_error(cmds->command, ": command not found");
+			info->status = 127;
+		}
+	}
 	else
-		info->status = pipex(info, cmds, &pip);
+		pipex(info, cmds, &pip);
 	dup2(pip.temp_0_fd, 0);
 	dup2(pip.temp_1_fd, 1);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 15:23:46 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 16:42:00 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../pars/minishell.h"
 
 //execute
-int		execute(t_execute *cmds, t_info *info);
+void	execute(t_execute *cmds, t_info *info);
 int		no_pipe_exe(t_execute *cmds, t_info *info);
 int		ft_builtins(t_execute *cmds, t_info *info);
 
@@ -53,5 +53,10 @@ void	fd_close(int fd_0, int fd_1, t_execute *cmds);
 int		ft_arg_size(t_arguments *arg);
 void	close_fd_pip(t_pipex *pip);
 int		init_pip(t_pipex *pip);
+
+//signal
+void 	sighandler(int signal);
+void	handle_ctrl_c(int signal, void *ptr);
+// int	handle_ctrl_d(const int signal, int *ptr);
 
 #endif

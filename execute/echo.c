@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 20:21:51 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 15:30:53 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 13:13:29 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	echo(t_execute *cmds, t_info *info)
 	
 	i = 0;
 	len = ft_arg_len(cmds->arguments);
-	if (ft_strncmp(cmds->option, "-n", 2) == 0)
+	if (cmds->option)
 	{
 		while (++i < len - 1)
 			printf("%s ", cmds->arguments[i]);

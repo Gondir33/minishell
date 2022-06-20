@@ -2,7 +2,7 @@ NAME = minishell
 
 CC = gcc
 
-CFLAGS = -lreadline -g -Wall -Wextra -Werror
+CFLAGS = -lreadline -g -Wall -Werror -Wextra
 
 INCLD =./execute/\
 
@@ -32,6 +32,7 @@ SRC = ./pars/main.c\
 		./execute/exit.c\
 		./execute/export.c\
 		./execute/unset.c\
+		./execute/signal.c\
 		
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 15:08:22 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 18:23:09 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,15 @@ int	check_first(t_info *info, char *key)
 	return (1);
 }
 
-int	unset(t_execute *cmds, t_info *info)
+static void check_list(t_info *info, char *key)
 {
 	t_list	*tmp;
-	char	*key;
-	int		i;
-
-	i = 1;
-	info->l_envp = info->l_envp->head;
+	
 	while (info->l_envp->next)
 	{
 		if (info->l_envp == info->l_envp->head)
-			i += check_first(info, cmds->arguments[i]);
-		key = cmds->arguments[i];
-		if (ft_strncmp(info->l_envp->next->key, key, ft_strlen(key)) == 0)
+			check_first(info, key);
+		else if (ft_strncmp(info->l_envp->next->key, key, ft_strlen(key)) == 0)
 		{
 			tmp = info->l_envp->next;
 			if (info->l_envp->next->next)
@@ -59,8 +54,22 @@ int	unset(t_execute *cmds, t_info *info)
 			free(tmp->key);
 			free(tmp->value);
 			free(tmp);
-			++i;
 		}
+		if (info->l_envp->next)
+			info->l_envp = info->l_envp->next;
+	}
+}
+
+int	unset(t_execute *cmds, t_info *info)
+{
+	int		i;
+
+	i = 1;
+	while (cmds->arguments[i])
+	{
+		info->l_envp = info->l_envp->head;
+		check_list(info, cmds->arguments[i]);
+		i++;
 	}
 	return (0);
 }

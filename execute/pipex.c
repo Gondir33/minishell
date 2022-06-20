@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 15:26:24 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 20:09:54 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,20 @@ int	child_process(t_execute *cmds, int fd_0, int fd_1, t_pipex *pip)
 
 	if (fd_open(cmds, fd_0, fd_1, fd) == -1)
 		return (-1);
+	dup2(fd_0, STDIN_FILENO);
+	dup2(fd_1, STDOUT_FILENO);
 	status = ft_builtins(cmds, cmds->info);
 	close_fd_pip(pip);
 	fd_close(fd[0], fd[1], cmds);
 	if (status == 6)
+	{
 		status = execve(cmds->arguments[0], cmds->arguments, pip->info->envp);
-	free_all(cmds);
-	free(pip->pid);
-	pip->pid = NULL;
-	free(pip->pipe_fd);
-	pip->pipe_fd = NULL;
+		if (status == 65280)
+		{
+			ft_error(cmds->command, ": command not found");
+			status = 127;
+		}
+	}
 	exit(status);
 }
 
@@ -116,15 +120,13 @@ int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 	int	i;
 
 	i = -1;
+	pip->info = info;
 	init_pip(pip);
 	info->pid_child = pip->pid;
 	parent_process(cmds, pip);
 	close_fd_pip(pip);
 	while (++i <= pip->num_pipes)
-	{
 		waitpid(pip->pid[i], &info->status, 0);
-		info->status = info->status % 256;
-	}
 	free(pip->pid);
 	pip->pid = NULL;
 	free(pip->pipe_fd);

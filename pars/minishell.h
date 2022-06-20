@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 13:50:14 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/19 12:01:28 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 09:56:30 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# define NUM_BUILTNS 7
 
 // Структура для аргументов, чтобы не релоцировать память
 typedef struct s_arguments

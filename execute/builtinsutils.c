@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 13:08:33 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/19 15:03:51 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 14:40:15 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@ char	*ft_strrcut(char *arg, char c)
 	int		len;
 	char	*s;
 	int		i;
-	
+	int		j;
+
+	j = -1;
 	len = ft_strlen(arg);
 	i = len;
 	while (arg[--i] != c)
 		;
-	s = malloc(len - i + 1);
+	s = malloc(len - i);
 	if (s == NULL)
 		return (NULL);
-	s[len - i] = 0;
+	s[len - i - 1] = 0;
 	while (arg[++i])
-		s[i] = arg[i];
+		s[++j] = arg[i];
 	return (s);
 }
 char	*ft_strcut(char *arg, char c)
