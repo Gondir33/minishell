@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 22:31:37 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 23:20:20 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,11 @@ char	**ft_split(char const *s, char c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*get_cmd(t_info *info, char *command);
 char	**ft_tabfree(char	**tab);
+char	*ft_strdup(char *s);
 
 //signal
 void	sighandler(int signal);
-void	handle_ctrl_c(int signal, void *ptr);
+void	handle_ctrl_c(int signal, int *ptr);
 // int	handle_ctrl_d(const int signal, int *ptr);
 
 #endif

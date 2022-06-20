@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:59:01 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 22:33:19 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 23:13:15 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*get_cmd(t_info *info, char *command)
 	tmp_cmd = ft_strjoin2("/", cmd);
 	cmd = check_cmd(path, tmp_cmd);
 	if (!cmd)
-		cmd = command;
+		cmd = ft_strdup(command);
 	free(tmp_cmd);
 	ft_tabfree(path);
 	return (cmd);

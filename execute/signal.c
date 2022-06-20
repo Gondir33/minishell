@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 11:26:10 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 20:23:36 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 23:20:01 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sighandler(int signal)
 	}
 }
 
-void	handle_ctrl_c(int signal, void *ptr)
+void	handle_ctrl_c(int signal, int *ptr)
 {
 	static int	*saved = NULL;
 	int			i;
@@ -32,8 +32,9 @@ void	handle_ctrl_c(int signal, void *ptr)
 		if (saved == NULL)
 		{
 			printf("\n");
-			printDir();
-			printf("> ");
+			rl_on_new_line();
+			rl_replace_line("", 1);
+			rl_redisplay();
 		}
 		else
 		{

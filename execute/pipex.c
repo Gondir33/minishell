@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 22:52:59 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 23:04:49 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,11 @@ void	parent_process(t_execute *cmds, t_pipex *pip)
 
 int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 {
-	int	i;
+	int			i;
+	t_execute	*tmp;
 
 	i = -1;
+	tmp = cmds;
 	pip->info = info;
 	init_pip(pip);
 	info->pid_child = pip->pid;
@@ -130,9 +132,10 @@ int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 		waitpid(pip->pid[i], &info->status, 0);
 		if (info->status == 65280)
 		{
-			ft_error(cmds->command, ": command not found");
+			ft_error(tmp->command, ": command not found");
 			info->status = 127;
 		}
+		tmp = tmp->next;
 	}
 	free(pip->pid);
 	pip->pid = NULL;
