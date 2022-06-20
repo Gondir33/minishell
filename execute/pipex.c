@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 20:39:27 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 22:52:59 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,14 @@ int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 	parent_process(cmds, pip);
 	close_fd_pip(pip);
 	while (++i <= pip->num_pipes)
+	{
 		waitpid(pip->pid[i], &info->status, 0);
+		if (info->status == 65280)
+		{
+			ft_error(cmds->command, ": command not found");
+			info->status = 127;
+		}
+	}
 	free(pip->pid);
 	pip->pid = NULL;
 	free(pip->pipe_fd);

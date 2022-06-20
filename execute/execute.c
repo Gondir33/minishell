@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 20:14:51 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/20 22:49:40 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ static void	child_no_pipe(t_execute *cmds, t_info *info, int *fd, int fd_pipe)
 				close(fd_pipe);
 			info->status = execve(cmds->arguments[0], \
 				cmds->arguments, info->envp);
-			free(info->pid_child);
-			free_all(cmds);
 			exit(info->status);
 		}
 		wait(&info->status);
