@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_structure.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:24:52 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/20 22:24:10 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 18:29:00 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_execute	*new_execute(t_execute *info)
 	tmp->command = NULL;
 	tmp->option = NULL;
 	tmp->stdin = NULL;
+	tmp->info = info->info;
 	tmp->stdin2 = NULL;
 	tmp->stdout = NULL;
 	tmp->stdout2 = NULL;

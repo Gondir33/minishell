@@ -6,7 +6,7 @@
 /*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 13:50:14 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/21 11:38:13 by leldiss          ###   ########.fr       */
+/*   Updated: 2022/06/21 14:30:31 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+# define WHITE_COLOR		"\001\033[1;97m\002"
+# define PURPLE_COLOR	"\001\033[1;95m\002"
+# define BLUE_COLOR		"\001\033[1;94m\002"
+# define RED_COLOR		"\001\033[1;91m\002"
 
 // Структура для аргументов, чтобы не релоцировать память
 typedef struct s_arguments
@@ -88,14 +93,14 @@ t_execute	*first_execute(void);
 t_execute	*new_execute(t_execute *info);
 void		first_argument(t_execute *info);
 void		new_argument(t_execute *info);
-void		free_arguments(t_arguments *arguments);
+void		free_arguments(t_arguments *arguments, t_execute *info);
 void		free_execute(t_execute *info);
 void		free_all(t_execute *info);
 
 // Функции парсера и лексера
 int			ft_strlen(char *str);
 int			size_line(char *line);
-// int			final_size_env(char	*line);
+char		*pure_argument(t_execute *info, char *line);
 
 // Парсинг > и >>
 char		*parse_double_output(t_execute *info, char *line);
@@ -150,6 +155,7 @@ char		*join_argument(char *str1, char *str2);
 void		start_parse(t_execute *info, char *line);
 
 // Мемная функция
-void		printDir(void);
+char		*join_prompt(char *str1, char *str2, int k);
+char		*printdir(void);
 
 #endif

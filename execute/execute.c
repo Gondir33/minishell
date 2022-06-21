@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/21 13:08:09 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 20:15:53 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int	no_pipe_exe(t_execute *cmds, t_info *info)
 	if (fd_open(&fd, cmds) == -1)
 		return (-1);
 	if (cmds->stdout != 0)
-		fd[1] = open(cmds->stdout, O_WRONLY | O_TRUNC | O_CREAT);
+		fd[1] = open(cmds->stdout, O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	else if (cmds->stdout2 != 0)
-		fd[1] = open(cmds->stdout2, O_WRONLY | O_APPEND | O_CREAT);
+		fd[1] = open(cmds->stdout2, O_WRONLY | O_APPEND | O_CREAT, 0666);
 	child_no_pipe(cmds, info, fd, fd[2]);
 	if (cmds->stdin2)
 		close(fd[2]);

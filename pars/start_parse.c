@@ -6,7 +6,7 @@
 /*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 13:49:22 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/21 11:50:08 by leldiss          ###   ########.fr       */
+/*   Updated: 2022/06/21 12:49:01 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ char	*is_handle(t_execute *info, char *line)
 		line = parse_output(info, ++line);
 	else if (*line == '<')
 		line = parse_input(info, ++line);
+	if (info->command == NULL)
+		line = parse_command(info, line);
+	else if (info->option == NULL && *line == '-')
+		line = parse_options(info, line);
 	else if (*line == '|')
 		line = parse_pipe(info, ++line);
 	else if (((*line <= 9 && *line >= 13) || *line != 32) && *line)
@@ -94,13 +98,6 @@ void	start_parse(t_execute *info, char *line)
 
 	str = line;
 	first_argument(info);
-	while ((*line >= 9 && *line <= 13) || *line == 32)
-		line++;
-	line = parse_command(info, line);
-	while ((*line >= 9 && *line <= 13) || *line == 32)
-		line++;
-	if (*line == '-')
-		line = parse_options(info, line);
 	while (*line)
 	{
 		while ((*line >= 9 && *line <= 13) || *line == 32)

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/21 13:07:49 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 20:25:23 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static int	fd_open2(t_execute *cmds)
 	return (0);
 }
 
-static int	fd_open(t_execute *cmds, int fd_0, int fd_1, int *fd)
+static int	fd_open(t_execute *cmds, int fd_0, int fd_1, int **fd)
 {
 	if (cmds->stdin != 0)
 	{
-		fd[0] = open(cmds->stdin, O_RDONLY);
-		if (fd[0] < 0)
+		(*fd)[0] = open(cmds->stdin, O_RDONLY);
+		if ((*fd)[0] < 0)
 			return (ft_error(cmds->stdin, ": No such file or dirctory"));
-		dup2(fd[0], 0);
+		dup2((*fd)[0], 0);
 	}
 	if (fd_open2(cmds) == -1)
 		return (-1);
@@ -52,13 +52,13 @@ static int	fd_open(t_execute *cmds, int fd_0, int fd_1, int *fd)
 		dup2(fd_0, 0);
 	if (cmds->stdout != 0)
 	{
-		fd[1] = open(cmds->stdin, O_WRONLY | O_TRUNC | O_CREAT);
-		dup2(fd[1], 1);
+		(*fd)[1] = open(cmds->stdout, O_WRONLY | O_TRUNC | O_CREAT, 0666);
+		dup2((*fd)[1], 1);
 	}
 	else if (cmds->stdout2 != 0)
 	{
-		fd[1] = open(cmds->stdin2, O_WRONLY | O_APPEND | O_CREAT);
-		dup2(fd[1], 1);
+		(*fd)[1] = open(cmds->stdout2, O_WRONLY | O_APPEND | O_CREAT, 0666);
+		dup2((*fd)[1], 1);
 	}
 	else
 		dup2(fd_1, 1);
@@ -67,15 +67,15 @@ static int	fd_open(t_execute *cmds, int fd_0, int fd_1, int *fd)
 
 int	child_process(t_execute *cmds, int fd_0, int fd_1, t_pipex *pip)
 {
-	int	fd[2];
+	int	*fd;
 	int	status;
 
-	if (fd_open(cmds, fd_0, fd_1, fd) == -1)
+	fd = malloc(sizeof(int) * 2);
+	if (fd_open(cmds, fd_0, fd_1, &fd) == -1)
 		return (-1);
-	dup2(fd_0, STDIN_FILENO);
-	dup2(fd_1, STDOUT_FILENO);
 	close_fd_pip(pip);
 	fd_close(fd[0], fd[1], cmds);
+	free(fd);
 	status = ft_builtins(cmds, cmds->info);
 	if (status == 6)
 	{

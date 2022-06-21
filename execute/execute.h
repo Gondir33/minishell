@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/21 13:08:01 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:11:10 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ char	*ft_strdup(char *s);
 void	get_status(t_info *info, t_execute *cmds);
 
 //signal
-void	make_signals_work(void);
+void	make_signals_work(t_info	*info);
 void	sighandler(int signal);
-void	handle_ctrl_c(int signal, int *ptr);
+void	handle_ctrl_c(int signal, void *ptr);
 void	handle_ctrl_qu(int signal, int *ptr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:49:47 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/18 13:03:01 by leldiss          ###   ########.fr       */
+/*   Updated: 2022/06/21 13:04:02 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,25 +103,15 @@ char	*parse_double_input(t_execute *info, char *line)
 
 char	*parse_input(t_execute *info, char *line)
 {
-	char	*str;
-	int		i;
-
 	if (*line == '<')
 		line = parse_double_input(info, ++line);
 	else
 	{
 		while ((*line >= 9 && *line <= 13) || *line == 32)
 			line++;
-		i = 0;
-		str = line;
-		info->stdin = (char *)malloc(size_line(str) + 1);
-		while (i < size_line(str))
-		{
-			info->stdin[i] = *line;
-			i++;
-			line++;
-		}
-		info->stdin[i] = 0;
+		line = pure_argument(info, line);
+		info->stdin = join_argument(info->argument->argument, NULL);
+		info->argument->argument = NULL;
 	}
 	return (line);
 }

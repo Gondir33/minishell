@@ -6,16 +6,21 @@
 /*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:19:22 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/18 10:17:57 by leldiss          ###   ########.fr       */
+/*   Updated: 2022/06/21 13:04:56 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_arguments(t_arguments *arguments)
+void	free_arguments(t_arguments *arguments, t_execute *info)
 {
 	t_arguments	*tmp;
 
+	if (info->arguments != NULL)
+	{
+		free(info->arguments[0]);
+		free(info->arguments);
+	}
 	if (arguments->head != NULL)
 		arguments = arguments->head;
 	while (arguments != NULL)
@@ -37,13 +42,8 @@ void	free_execute(t_execute *info)
 	while (info != NULL)
 	{
 		tmp = info;
-		if (info->arguments != NULL)
-		{
-			free(info->arguments[0]);
-			free(info->arguments);
-		}
 		if (info->argument != NULL)
-			free_arguments(info->argument);
+			free_arguments(info->argument, info);
 		if (info->command != NULL)
 			free(info->command);
 		if (info->option != NULL)
