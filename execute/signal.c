@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 11:26:10 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/21 10:54:03 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 12:55:17 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,18 @@
 void	display_prompt(void)
 {	
 	write(1, "\n", 1);
+	printDir();
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	rl_redisplay();
+}
+
+void	make_signals_work(void)
+{
+	signal(SIGINT, sighandler);
+	signal(SIGQUIT, SIG_IGN);
+	handle_ctrl_c(5000, NULL);
+	handle_ctrl_qu(5000, NULL);
 }
 
 void	sighandler(int signal)
@@ -30,27 +39,23 @@ void	sighandler(int signal)
 
 void	handle_ctrl_c(int signal, int *ptr)
 {
-	static int	*saved = NULL;
-	int			i;
+	static pid_t	*saved = NULL;
+	int				i;
 
+	i = -1;
 	if (signal == 5000)
 		saved = ptr;
 	if (signal == SIGINT)
 	{
 		if (saved == NULL)
-		{
-			printf("\n");
-			printDir();
-		}
+			display_prompt();
 		else
 		{
-			i = -1;
-			while (saved[++i] != 0)
-			{
-				printf("pid is %d\n", saved[i]);
+			while (saved[++i])
 				kill(saved[i], SIGTERM);
-			}
-			// printf("\n");
+			printf("\n");
+			saved = NULL;
+			saved = saved;
 		}
 	}
 }
@@ -60,21 +65,21 @@ void	handle_ctrl_qu(int signal, int *ptr)
 	static int	*saved = NULL;
 	int			i;
 
+	i = 0;
 	if (signal == 5000)
 		saved = ptr;
-	if (signal == SIGINT)
+	if (signal == SIGQUIT)
 	{
-		if (saved == NULL)
+		if (saved != NULL)
 		{
-			
-		}
-		else
-		{
-			i = -1;
-			while (saved[++i] != 0)
-				kill(saved[i], SIGTERM);
 			printf("Quit\n");
-			printDir();
+			while (saved[i])
+			{
+				kill(saved[i], SIGTERM);
+				i++;
+			}
+			saved = NULL;
+			saved = saved;
 		}
 	}
 }

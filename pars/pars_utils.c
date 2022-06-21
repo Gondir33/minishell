@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 13:03:12 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/19 12:34:58 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 10:48:07 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	string_compare(char *str1, char *str2)
 	int	i;
 
 	i = 0;
+	if (str1 == NULL)
+		return (1);
 	while (str1[i] || str2[i])
 	{
 		if (str1[i] != str2[i])

@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/sbendu/projects/minishell'
+make: Entering directory '/home/sbendu/projects/uran'
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c pars/main.c -o pars/main.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c pars/free_structure.c -o pars/free_structure.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c pars/initialize_structure.c -o pars/initialize_structure.o
@@ -31,5 +31,5 @@ gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/path.c -o exec
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/utils3.c -o execute/utils3.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c execute/ft_split.c -o execute/ft_split.o
 gcc pars/main.o pars/free_structure.o pars/initialize_structure.o pars/parse_double_quotes.o pars/parse_env.o pars/parse_input.o pars/parse_output.o pars/parse_pipe.o pars/parse_quotes.o pars/start_parse.o pars/env_utils.o pars/pars_utils.o pars/pars_utils2.o pars/pars_utils3.o execute/execute.o execute/pipex.o execute/utils.o execute/utils2.o execute/pwd.o execute/builtinsutils.o execute/cd.o execute/echo.o execute/env.o execute/exit.o execute/export.o execute/unset.o execute/signal.o execute/path.o execute/utils3.o execute/ft_split.o -o minishell -lreadline -g -Wall -Werror -Wextra -o minishell
-make: Leaving directory '/home/sbendu/projects/minishell'
+make: Leaving directory '/home/sbendu/projects/uran'
  

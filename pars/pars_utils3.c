@@ -6,7 +6,7 @@
 /*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 13:16:51 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/18 13:17:39 by leldiss          ###   ########.fr       */
+/*   Updated: 2022/06/21 10:44:21 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,17 @@ char	*get_key(char	*str)
 		key[i] = 0;
 	}
 	return (key);
+}
+
+int	size_command(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (((line[i] <= 9 && line[i] >= 13) || line[i] != 32)
+		&& line[i])
+	{
+		i++;
+	}
+	return (i);
 }

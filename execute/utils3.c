@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:08:56 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 23:14:00 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 13:08:00 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,17 @@ char	*ft_strdup(char *s)
 		i++;
 	}
 	return (news);
+}
+
+void	get_status(t_info *info, t_execute *cmds)
+{
+	if (info->status == 2)
+		info->status = 130;
+	else if (info->status == 3)
+		info->status = 131;
+	else if (info->status == 65280)
+	{
+		ft_error(cmds->command, ": command not found");
+		info->status = 127;
+	}
 }

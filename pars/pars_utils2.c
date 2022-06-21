@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 13:05:41 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/20 13:39:02 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 10:39:19 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,17 @@ int	status_size(int number)
 char	*current_status(t_execute *info, char *line, int *i)
 {
 	char	*status;
+	char	*tmp;
 
 	status = itoa(info->info->status);
+	tmp = status;
 	while (*status)
 	{
 		info->argument->argument[*i] = *status;
 		status++;
 		*i = *i + 1;
 	}
+	free(tmp);
 	line = line + 2;
 	return (line);
 }

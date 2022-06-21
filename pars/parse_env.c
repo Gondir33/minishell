@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_env.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 13:58:42 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/19 10:13:42 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 11:10:46 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	final_size_env(char	*line, t_execute *info)
 	else
 	{
 		while ((*line <= 9 && *line >= 13) || (*line != 32
-			&& *line && *line != '\'' && *line != '\"'))
+				&& *line && *line != '\'' && *line != '\"'))
 		{
 			if (*line == '$')
 			{

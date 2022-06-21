@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:57:39 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 22:31:48 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 12:54:21 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	init_arg(t_execute *cmds, int num)
 {
 	int		i;
 	t_info	*info;
-	
+
 	info = cmds->info;
 	while (cmds)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 13:50:14 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/20 09:56:30 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 11:38:13 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ int			status_size(int number);
 char		*itoa(int number);
 
 // Парсинг команды и флагов
+int			size_command(char *line);
 char		*parse_options(t_execute *info, char *line);
 char		*parse_command(t_execute *info, char *line);
 

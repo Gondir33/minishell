@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:30:59 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/21 11:00:38 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 13:08:09 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ static void	child_no_pipe(t_execute *cmds, t_info *info, int *fd, int fd_pipe)
 	info->pid_child = (int *)malloc(sizeof(int) * 2);
 	if (info->status == 6)
 	{
-		handle_ctrl_c(5000, info->pid_child);
 		info->pid_child[0] = fork();
 		info->pid_child[1] = 0;
+		handle_ctrl_c(5000, info->pid_child);
+		handle_ctrl_qu(5000, info->pid_child);
 		if (!info->pid_child[0])
 		{
 			fd_close(fd[0], fd[1], cmds);
@@ -79,7 +80,7 @@ static void	child_no_pipe(t_execute *cmds, t_info *info, int *fd, int fd_pipe)
 				cmds->arguments, info->envp);
 			exit(info->status);
 		}
-		waitpid(info->status, &info->status, 0);
+		waitpid(info->pid_child[0], &info->status, 0);
 	}
 	fd_close(fd[0], fd[1], cmds);
 }
@@ -101,6 +102,7 @@ int	no_pipe_exe(t_execute *cmds, t_info *info)
 	if (cmds->stdin2)
 		close(fd[2]);
 	free(info->pid_child);
+	info->pid_child = NULL;
 	free(fd);
 	return (0);
 }
@@ -109,6 +111,7 @@ void	execute(t_execute *cmds, t_info *info)
 {
 	t_pipex	pip;
 
+	signal(SIGQUIT, sighandler);
 	pip.temp_0_fd = dup(0);
 	pip.temp_1_fd = dup(1);
 	pip.num_pipes = ft_lstsize(cmds) - 1;
@@ -116,13 +119,7 @@ void	execute(t_execute *cmds, t_info *info)
 	if (pip.num_pipes == 0)
 	{
 		no_pipe_exe(cmds, info);
-		if (WIFSIGNALED(info->status) != 0)
-			info->status = WTERMSIG(info->status);
-		if (info->status == 65280)
-		{
-			ft_error(cmds->command, ": command not found");
-			info->status = 127;
-		}
+		get_status(info, cmds);
 	}
 	else
 		pipex(info, cmds, &pip);

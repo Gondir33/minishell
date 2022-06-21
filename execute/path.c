@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:59:01 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/21 08:00:46 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 12:53:42 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static char	*check_cmd(char **path, char *tmp_cmd)
 
 	i = -1;
 	if (path)
+	{
 		while (path[++i])
 		{
 			tmp = ft_strjoin2(path[i], tmp_cmd);
@@ -45,6 +46,7 @@ static char	*check_cmd(char **path, char *tmp_cmd)
 			else
 				free(tmp);
 		}
+	}
 	return (NULL);
 }
 

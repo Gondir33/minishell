@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:58:47 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/21 11:00:46 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 11:40:36 by leldiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "../execute/execute.h"
 
-void printDir()
+void printDir(void)
 {
 	char	cwd[1024];
 	char *username;
 
 	username = getenv("USER");
 	getcwd(cwd, sizeof(cwd));
-	printf("%s in %s ", username, cwd);
+	printf("\001\033[1;91m\002%s \001\033[1;94m\002in \001\033[1;95m\002%s ", username, cwd);
 }
 
 char	*ft_readline(char *p)
@@ -43,41 +43,18 @@ int main(int ac, char **av, char *envp[])
 
 	init_info(&information, envp);
 	get_envp(&information, envp);
-	signal(SIGINT, sighandler);
-	signal(SIGQUIT, SIG_IGN);
 	while(1)
 	{
-		handle_ctrl_qu(5000, information.pid_child);
+		make_signals_work();
 		info = first_execute();
 		printDir();
 		info->info = &information;
-		line = ft_readline("> ");
-
+		line = ft_readline("\001\033[1;97m\002> ");
 		if (line == NULL)
 			ft_exit(info, &information);
 		start_parse(info, line);
-	/*
-	while (info != NULL)
-	{
-		printf("Command is %s\n", info->command);
-		printf("Option is %s\n", info->option);
-		printf("Output is %s\n", info->stdout);
-		printf("Output2 is %s\n", info->stdout2);
-		printf("Input is %s\n", info->stdin);
-		printf("Input2 is %s\n", info->stdin2);
-		info->argument = info->argument->head;
-		int i = 1;
-		t_arguments *kek = info->argument;
-		while (kek != NULL)
-		{
-			printf("argument %d = %s end\n", i, kek->argument);
-			i++;
-			kek = kek->next;
-		}
-		info = info->next;		
-	}
-	*/
-		execute(info, &information);
+		if (info->command != NULL)
+			execute(info, &information);
 		free_all(info);
 	}
 	exit(0);
