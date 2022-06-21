@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_output.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leldiss <leldiss@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:00:28 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/21 12:58:14 by leldiss          ###   ########.fr       */
+/*   Updated: 2022/06/21 20:58:00 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*parse_double_output(t_execute *info, char *line)
 	while ((*line >= 9 && *line <= 13) || *line == 32)
 		line++;
 	line = pure_argument(info, line);
-	info->stdout = join_argument(info->argument->argument, NULL);
+	info->stdout2 = join_argument(info->argument->argument, NULL);
 	info->argument->argument = NULL;
 	return (line);
 }

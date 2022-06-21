@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jun 21 19:34:35 2022
+# Make data base, printed on Tue Jun 21 20:35:39 2022
 
 # Variables
 
@@ -31,7 +31,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/sbendu/projects/final2
+CURDIR := /home/sbendu/projects/minishell
 # makefile
 SHELL = /bin/sh
 # environment
@@ -59,7 +59,7 @@ PATH = /home/sbendu/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-353ce862-0db9-4434-8981-f4a43dae0301.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-89d60812-f8c7-40bb-b5c0-16292faed3dc.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -71,11 +71,11 @@ DISPLAY = localhost:0.0
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/sbendu/projects/final2
+PWD = /home/sbendu/projects/minishell
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/2910_interop
+WSL_INTEROP = /run/WSL/12_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -85,7 +85,7 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 LOGNAME = sbendu
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -165,11 +165,11 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 2064, inode 89815): 7 files, no impossibilities.
-# pars (device 2064, inode 95665): 17 files, no impossibilities so far.
+# . (device 2064, inode 81296): 7 files, no impossibilities.
+# pars (device 2064, inode 95665): 23 files, no impossibilities so far.
 # execute (device 2064, inode 95646): 17 files, no impossibilities so far.
 
-# 41 files, no impossibilities in 3 directories.
+# 47 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -239,7 +239,7 @@ execute/env.c:
 # Not a target:
 execute/exit.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-21 19:34:23.360952761
+#  Last modified 2022-06-21 19:35:22.220952543
 #  File has been updated.
 #  Successfully updated.
 
@@ -271,10 +271,10 @@ Makefile:
 # Not a target:
 execute/unset.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-21 19:34:23.360952761
+#  Last modified 2022-06-21 20:07:26.570945412
 #  File has been updated.
- 
 #  Successfully updated.
+ 
 
 pars/main.o: pars/main.c pars/minishell.h execute/execute.h pars/main.c pars/free_structure.c pars/initialize_structure.c pars/parse_double_quotes.c pars/parse_env.c pars/parse_input.c pars/parse_output.c pars/parse_pipe.c pars/parse_quotes.c pars/start_parse.c pars/env_utils.c pars/pars_utils.c pars/pars_utils2.c pars/pars_utils3.c execute/execute.c execute/pipex.c execute/utils.c execute/utils2.c execute/pwd.c execute/builtinsutils.c execute/cd.c execute/echo.c execute/env.c execute/exit.c execute/export.c execute/unset.c execute/signal.c execute/path.c execute/utils3.c execute/ft_split.c
 #  Implicit rule search has been done.
@@ -467,7 +467,7 @@ pars/parse_quotes.o:
 # Not a target:
 execute/execute.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-21 19:34:23.360952761
+#  Last modified 2022-06-21 20:15:53.220943534
 #  File has been updated.
 #  Successfully updated.
 
@@ -520,7 +520,7 @@ clean:
 # Not a target:
 execute/pipex.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-21 19:34:23.360952761
+#  Last modified 2022-06-21 20:25:23.70094142
 #  File has been updated.
 #  Successfully updated.
 
@@ -548,9 +548,9 @@ pars/parse_double_quotes.c:
 # Not a target:
 execute/execute.h:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-06-21 19:34:23.360952761
 #  File has been updated.
+ 
 #  Successfully updated.
 
 # Not a target:
@@ -676,12 +676,12 @@ execute/signal.c:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 114 / storage = 1619 B / avg = 14 B
-# current buf: size = 8162 B / used = 1619 B / count = 114 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 118 / storage = 1635 B / avg = 13 B
+# current buf: size = 8162 B / used = 1635 B / count = 118 / avg = 13 B
 
-# strcache performance: lookups = 205 / hit rate = 44%
+# strcache performance: lookups = 211 / hit rate = 44%
 # hash-table stats:
-# Load=114/8192=1%, Rehash=0, Collisions=2/205=1%
-# Finished Make data base on Tue Jun 21 19:34:35 2022
+# Load=118/8192=1%, Rehash=0, Collisions=2/211=1%
+# Finished Make data base on Tue Jun 21 20:35:39 2022
 
  
