@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 09:58:47 by leldiss           #+#    #+#             */
-/*   Updated: 2022/06/20 23:12:31 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 11:00:46 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,16 @@ int main(int ac, char **av, char *envp[])
 	get_envp(&information, envp);
 	signal(SIGINT, sighandler);
 	signal(SIGQUIT, SIG_IGN);
-	// signal(EOF, sighandler);
 	while(1)
 	{
+		handle_ctrl_qu(5000, information.pid_child);
 		info = first_execute();
 		printDir();
-		handle_ctrl_c(5000, information.pid_child);
 		info->info = &information;
 		line = ft_readline("> ");
+
+		if (line == NULL)
+			ft_exit(info, &information);
 		start_parse(info, line);
 	/*
 	while (info != NULL)

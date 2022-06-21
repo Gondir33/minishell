@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 09:43:26 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 23:04:49 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 10:50:54 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,10 @@ int	pipex(t_info *info, t_execute *cmds, t_pipex *pip)
 	close_fd_pip(pip);
 	while (++i <= pip->num_pipes)
 	{
+		handle_ctrl_c(5000, info->pid_child);
 		waitpid(pip->pid[i], &info->status, 0);
+		if (WIFSIGNALED(info->status))
+			info->status = WTERMSIG(info->status);
 		if (info->status == 65280)
 		{
 			ft_error(tmp->command, ": command not found");

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:53:03 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 23:20:20 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 10:25:26 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ char	*ft_strdup(char *s);
 //signal
 void	sighandler(int signal);
 void	handle_ctrl_c(int signal, int *ptr);
-// int	handle_ctrl_d(const int signal, int *ptr);
+void	handle_ctrl_qu(int signal, int *ptr);
 
 #endif

@@ -1,4 +1,4 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/sbendu/projects/minishell'
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c pars/main.c -o pars/main.o
 gcc -lreadline -g -Wall -Werror -Wextra -I ./execute/  -c pars/free_structure.c -o pars/free_structure.o

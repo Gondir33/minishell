@@ -41,7 +41,7 @@ OBJ = $(SRC:.c=.o)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ) 
+$(NAME): $(OBJ)
 	$(CC) $^ -o $@ $(CFLAGS) -o $(NAME)
 
 %.o: %.c  $(INCLD) $(SRC)

@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:09:48 by sbendu            #+#    #+#             */
-/*   Updated: 2022/06/20 21:21:45 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/06/21 08:58:26 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ char	**ft_tabfree(char	**tab)
 	size_t	i;
 
 	i = 0;
-	while (tab[i])
+	if (tab)
 	{
-		free(tab[i]);
-		i++;
+		while (tab[i])
+		{
+			free(tab[i]);
+			i++;
+		}
+		free(tab);
 	}
-	free(tab);
 	return (NULL);
 }
 
